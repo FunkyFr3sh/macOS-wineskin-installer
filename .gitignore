@@ -4,14 +4,11 @@
 /Mac/_builds/dmg/**
 /Mac/_builds/pkg/**
 
-# Windows Ignore Files
-**/Thumbs.db
-/Windows/_builds/installer/**
-/Windows/_builds/launcher/**
-/Windows/_builds/cnc-ddraw/**
-
 # Linux Ignore Files
 *.snap
 
 # Global
 !**/.gitkeep
+
+# Visual Studio
+.vs

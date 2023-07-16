@@ -1,6 +1,6 @@
 #!/bin/sh
 
-APP_NAME="Infantry Online"
+APP_NAME="Custom"
 APP_LOCATION="./_builds/app/${APP_NAME}.app"
 
 SKIP_PKG=false
@@ -13,13 +13,14 @@ cd $WORKINGDIR
 if [ -d "${APP_LOCATION}" ]; then
 	APP_VERSION=$(plutil -extract CFBundleShortVersionString raw -o - "${APP_LOCATION}/Contents/Info.plist")
 	#OVERRIDE PACKAGING VISIBLE VERSION?
-	#APP_VERSION="1.55b"
+	#APP_VERSION="1.0"
 	
-	APP_NAMEVERSION_NOSPACES="${APP_NAME//[[:blank:]]/}_${APP_VERSION//[[:blank:]]/}"
+	APP_NAMEVERSION_NOSPACES="${APP_NAME//[[:blank:]]/}-${APP_VERSION//[[:blank:]]/}"
+	APP_NAMEVERSION_NOSPACES_NOHYPHEN="${APP_NAME//[[:blank:]]/}_${APP_VERSION//[[:blank:]]/}"
 	
-	PKGPROJ_LOCATION="./_assets/${APP_NAME}.pkgproj"
+	PKGPROJ_LOCATION="./_assets/pkg.pkgproj"
 	PKG_LOCATION="./_builds/pkg/${APP_NAME} ${APP_VERSION}.pkg"
-	DMG_LOCATION="./_builds/dmg/${APP_NAMEVERSION_NOSPACES}_Mac.dmg"
+	DMG_LOCATION="./_builds/dmg/${APP_NAMEVERSION_NOSPACES_NOHYPHEN}_Mac.dmg"
 	
 	echo ""
 	echo "*********"
@@ -66,14 +67,13 @@ if [ -d "${APP_LOCATION}" ]; then
 		if [ "$SKIP_DMG" = false ]; then
 			create-dmg \
 			--volname "Install ${APP_NAME} ${APP_VERSION}" \
-			--volicon "./_assets/images/floppy.icns" \
 			--background "./_assets/images/background.png" \
 			--window-pos 200 120 \
 			--window-size 512 410 \
 			--icon-size 96 \
 			--text-size 12 \
 			--no-internet-enable \
-			--icon "${APP_NAME} ${APP_VERSION}.pkg" 385 230 \
+			--icon "${APP_NAME} ${APP_VERSION}.pkg" 256 150 \
 			"${DMG_LOCATION}" \
 			"./_builds/pkg/"
 			
