@@ -274,9 +274,8 @@ if [ -d "lib/wine/x86_64-windows" ]; then
 	mv lib/wine/x86_64-windows_tmp/ws2_32.dll lib/wine/x86_64-windows/ws2_32.dll
 
 	rm -r lib/wine/x86_64-windows_tmp
-elif [ -d "lib64/wine" ]; then
+elif [ -d "lib/wine/x86_64-windows" ]; then
 	#TODO: Add support for older wine versions
-	
 	echo "Error: directory x86_64-windows not found"
 else
 	echo "Error: directory x86_64-windows not found"
