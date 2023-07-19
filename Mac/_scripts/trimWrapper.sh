@@ -202,6 +202,12 @@ if [ -d "lib/wine/i386-windows" ]; then
 	mv lib/wine/i386-windows_tmp/ws2_32.dll lib/wine/i386-windows/ws2_32.dll
 
 	rm -r lib/wine/i386-windows_tmp
+	
+	#Debug code to reduce spam in opensnoop
+	#cd "$WORKINGDIR"
+	#cp Contents/SharedSupport/prefix/drive_c/windows/syswow64/* Contents/SharedSupport/wine/lib/wine/i386-windows
+	#cd Contents/SharedSupport/wine/
+	
 elif [ -d "lib/wine/i386-windows" ]; then
 	#TODO: Add support for older wine versions
 	echo "Error: directory i386-windows not found"
@@ -266,14 +272,23 @@ if [ -d "lib/wine/x86_64-windows" ]; then
 
 	mv lib/wine/x86_64-windows_tmp/apisetschema.dll lib/wine/x86_64-windows/apisetschema.dll
 	mv lib/wine/x86_64-windows_tmp/dnsapi.dll lib/wine/x86_64-windows/dnsapi.dll
+	mv lib/wine/x86_64-windows_tmp/hidparse.sys lib/wine/x86_64-windows/hidparse.sys
+	mv lib/wine/x86_64-windows_tmp/hidclass.sys lib/wine/x86_64-windows/hidclass.sys
 	mv lib/wine/x86_64-windows_tmp/mountmgr.sys lib/wine/x86_64-windows/mountmgr.sys
+	mv lib/wine/x86_64-windows_tmp/ndis.sys lib/wine/x86_64-windows/ndis.sys
 	mv lib/wine/x86_64-windows_tmp/nsiproxy.sys lib/wine/x86_64-windows/nsiproxy.sys
 	mv lib/wine/x86_64-windows_tmp/ntdll.dll lib/wine/x86_64-windows/ntdll.dll
 	mv lib/wine/x86_64-windows_tmp/ntoskrnl.exe lib/wine/x86_64-windows/ntoskrnl.exe
 	mv lib/wine/x86_64-windows_tmp/winebus.sys lib/wine/x86_64-windows/winebus.sys
+	mv lib/wine/x86_64-windows_tmp/winehid.sys lib/wine/x86_64-windows/winehid.sys
 	mv lib/wine/x86_64-windows_tmp/ws2_32.dll lib/wine/x86_64-windows/ws2_32.dll
 
 	rm -r lib/wine/x86_64-windows_tmp
+	
+	#Debug code to reduce spam in opensnoop
+	#cd "$WORKINGDIR"
+	#cp Contents/SharedSupport/prefix/drive_c/windows/system32/* Contents/SharedSupport/wine/lib/wine/x86_64-windows
+	
 elif [ -d "lib/wine/x86_64-windows" ]; then
 	#TODO: Add support for older wine versions
 	echo "Error: directory x86_64-windows not found"
