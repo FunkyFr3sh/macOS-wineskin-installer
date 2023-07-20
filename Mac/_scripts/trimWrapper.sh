@@ -1,8 +1,8 @@
 #!/bin/sh
 
 # The following script will reduce the filesize of a clean wineskin wrapper to less than 40MB
-# Made for old games with little to no dependencies. Tested with Warcraft II, EV Nova
-# Tested with wine version WS11WineCX64Bit22.1.1-8
+# Made for old games with little to no dependencies. Tested with Warcraft II, EV Nova, GTA
+# Tested with wine version WS11WineCX64Bit22.1.1-8, WS11WineCX64Bit21.2.0-1
 
 
 # cd current working directory
@@ -193,6 +193,8 @@ rm -r Contents/SharedSupport/wine/share/wine/mono/*
 cd Contents/SharedSupport/wine/
 
 if [ -d "lib/wine/i386-windows" ]; then
+	#WS11WineCX64Bit22.1.1-8
+
 	mv lib/wine/i386-windows lib/wine/i386-windows_tmp
 	mkdir lib/wine/i386-windows
 
@@ -208,15 +210,67 @@ if [ -d "lib/wine/i386-windows" ]; then
 	#cp Contents/SharedSupport/prefix/drive_c/windows/syswow64/* Contents/SharedSupport/wine/lib/wine/i386-windows
 	#cd Contents/SharedSupport/wine/
 	
-elif [ -d "lib/wine/i386-windows" ]; then
-	#TODO: Add support for older wine versions
-	echo "Error: directory i386-windows not found"
+elif [ -f "lib/wine/ntdll.dll" ]; then
+	#WS11WineCX64Bit21.2.0-1
+	
+	mv lib/wine lib/wine_tmp
+	mkdir lib/wine
+
+	mv lib/wine_tmp/ntdll.dll lib/wine/ntdll.dll
+	mv lib/wine_tmp/kernel32.dll lib/wine/kernel32.dll 
+	mv lib/wine_tmp/kernelbase.dll lib/wine/kernelbase.dll 
+	mv lib/wine_tmp/user32.dll lib/wine/user32.dll 
+	mv lib/wine_tmp/advapi32.dll lib/wine/advapi32.dll 
+	mv lib/wine_tmp/msvcrt.dll lib/wine/msvcrt.dll 
+	mv lib/wine_tmp/sechost.dll lib/wine/sechost.dll 
+	mv lib/wine_tmp/ucrtbase.dll lib/wine/ucrtbase.dll 
+	mv lib/wine_tmp/gdi32.dll lib/wine/gdi32.dll 
+	mv lib/wine_tmp/setupapi.dll lib/wine/setupapi.dll 
+	mv lib/wine_tmp/rpcrt4.dll lib/wine/rpcrt4.dll 
+	mv lib/wine_tmp/version.dll lib/wine/version.dll 
+	mv lib/wine_tmp/comdlg32.dll lib/wine/comdlg32.dll 
+	mv lib/wine_tmp/comctl32.dll lib/wine/comctl32.dll 
+	mv lib/wine_tmp/imm32.dll lib/wine/imm32.dll 
+	mv lib/wine_tmp/shlwapi.dll lib/wine/shlwapi.dll 
+	mv lib/wine_tmp/shcore.dll lib/wine/shcore.dll 
+	mv lib/wine_tmp/ole32.dll lib/wine/ole32.dll 
+	mv lib/wine_tmp/combase.dll lib/wine/combase.dll 
+	mv lib/wine_tmp/oleaut32.dll lib/wine/oleaut32.dll  							
+	mv lib/wine_tmp/winmm.dll lib/wine/winmm.dll 
+	mv lib/wine_tmp/wsock32.dll lib/wine/wsock32.dll 
+	mv lib/wine_tmp/msacm32.dll lib/wine/msacm32.dll 
+	mv lib/wine_tmp/msimg32.dll lib/wine/msimg32.dll 
+	mv lib/wine_tmp/oledlg.dll lib/wine/oledlg.dll 
+	mv lib/wine_tmp/urlmon.dll lib/wine/urlmon.dll 
+	mv lib/wine_tmp/wininet.dll lib/wine/wininet.dll 
+	mv lib/wine_tmp/mpr.dll lib/wine/mpr.dll 																					
+	mv lib/wine_tmp/gdiplus.dll lib/wine/gdiplus.dll 
+	mv lib/wine_tmp/imagehlp.dll lib/wine/imagehlp.dll 
+	mv lib/wine_tmp/dbghelp.dll lib/wine/dbghelp.dll 																																  
+	mv lib/wine_tmp/uxtheme.dll lib/wine/uxtheme.dll 
+	mv lib/wine_tmp/dwmapi.dll lib/wine/dwmapi.dll 
+	mv lib/wine_tmp/msftedit.dll lib/wine/msftedit.dll 
+	mv lib/wine_tmp/riched20.dll lib/wine/riched20.dll 
+	mv lib/wine_tmp/riched32.dll lib/wine/riched32.dll 
+	mv lib/wine_tmp/mmdevapi.dll lib/wine/mmdevapi.dll 
+	mv lib/wine_tmp/dsound.dll lib/wine/dsound.dll 
+	mv lib/wine_tmp/psapi.dll lib/wine/psapi.dll 
+	mv lib/wine_tmp/usp10.dll lib/wine/usp10.dll 
+	mv lib/wine_tmp/dplayx.dll lib/wine/dplayx.dll 
+	mv lib/wine_tmp/api-ms-win-core-synch-l1-2-0.dll lib/wine/api-ms-win-core-synch-l1-2-0.dll
+	mv lib/wine_tmp/api-ms-win-core-fibers-l1-1-1.dll lib/wine/api-ms-win-core-fibers-l1-1-1.dll 
+	mv lib/wine_tmp/api-ms-win-core-localization-l1-2-1.dll lib/wine/api-ms-win-core-localization-l1-2-1.dll 
+	mv lib/wine_tmp/midimap.dll lib/wine/midimap.dll 
+	
+	rm -r lib/wine_tmp
 else
-	echo "Error: directory i386-windows not found"
+	echo "directory i386-windows not found"
 fi
 
 
 if [ -d "lib/wine/x86_32on64-unix" ]; then
+	#WS11WineCX64Bit22.1.1-8
+
 	mv lib/wine/x86_32on64-unix lib/wine/x86_32on64-unix_tmp
 	mkdir lib/wine/x86_32on64-unix
 
@@ -236,13 +290,15 @@ if [ -d "lib/wine/x86_32on64-unix" ]; then
 	rm -r lib/wine/x86_32on64-unix_tmp
 elif [ -d "lib/wine/x86_32on64-unix" ]; then
 	#TODO: Add support for older wine versions
-	echo "Error: directory x86_32on64-unix not found"
+	echo "directory x86_32on64-unix not found"
 else
-	echo "Error: directory x86_32on64-unix not found"
+	echo "directory x86_32on64-unix not found"
 fi
 
 
 if [ -d "lib/wine/x86_64-unix" ]; then
+	#WS11WineCX64Bit22.1.1-8
+
 	mv lib/wine/x86_64-unix lib/wine/x86_64-unix_tmp
 	mkdir lib/wine/x86_64-unix
 
@@ -260,13 +316,15 @@ if [ -d "lib/wine/x86_64-unix" ]; then
 	rm -r lib/wine/x86_64-unix_tmp
 elif [ -d "lib/wine/x86_64-unix" ]; then
 	#TODO: Add support for older wine versions
-	echo "Error: directory x86_64-unix not found"
+	echo "directory x86_64-unix not found"
 else
-	echo "Error: directory x86_64-unix not found"
+	echo "directory x86_64-unix not found"
 fi
 
 
 if [ -d "lib/wine/x86_64-windows" ]; then
+	#WS11WineCX64Bit22.1.1-8
+	
 	mv lib/wine/x86_64-windows lib/wine/x86_64-windows_tmp
 	mkdir lib/wine/x86_64-windows
 
@@ -289,9 +347,64 @@ if [ -d "lib/wine/x86_64-windows" ]; then
 	#cd "$WORKINGDIR"
 	#cp Contents/SharedSupport/prefix/drive_c/windows/system32/* Contents/SharedSupport/wine/lib/wine/x86_64-windows
 	
-elif [ -d "lib/wine/x86_64-windows" ]; then
-	#TODO: Add support for older wine versions
-	echo "Error: directory x86_64-windows not found"
+elif [ -d "lib64/wine" ]; then
+	#WS11WineCX64Bit21.2.0-1
+
+	mv lib64/wine lib64/wine_tmp
+	mkdir lib64/wine
+
+	mv lib64/wine_tmp/mountmgr.sys.so lib64/wine/mountmgr.sys.so
+	mv lib64/wine_tmp/ndis.sys lib64/wine/ndis.sys
+	mv lib64/wine_tmp/ntdll.dll lib64/wine/ntdll.dll
+	mv lib64/wine_tmp/ntdll.so lib64/wine/ntdll.so
+	mv lib64/wine_tmp/winebus.sys.so lib64/wine/winebus.sys.so
+	mv lib64/wine_tmp/winehid.sys lib64/wine/winehid.sys
+	mv lib64/wine_tmp/kernel32.dll lib64/wine/kernel32.dll 
+	mv lib64/wine_tmp/kernelbase.dll lib64/wine/kernelbase.dll 
+	mv lib64/wine_tmp/advapi32.dll lib64/wine/advapi32.dll 
+	mv lib64/wine_tmp/msvcrt.dll lib64/wine/msvcrt.dll 
+	mv lib64/wine_tmp/sechost.dll lib64/wine/sechost.dll 
+	mv lib64/wine_tmp/ucrtbase.dll lib64/wine/ucrtbase.dll 
+	mv lib64/wine_tmp/ws2_32.dll.so lib64/wine/ws2_32.dll.so 
+	mv lib64/wine_tmp/winemenubuilder.exe lib64/wine/winemenubuilder.exe 
+	mv lib64/wine_tmp/services.exe lib64/wine/services.exe 
+	mv lib64/wine_tmp/setupapi.dll lib64/wine/setupapi.dll 
+	mv lib64/wine_tmp/version.dll lib64/wine/version.dll 
+	mv lib64/wine_tmp/userenv.dll lib64/wine/userenv.dll 
+	mv lib64/wine_tmp/winedevice.exe lib64/wine/winedevice.exe 
+	mv lib64/wine_tmp/ntoskrnl.exe lib64/wine/ntoskrnl.exe
+	mv lib64/wine_tmp/iphlpapi.dll.so lib64/wine/iphlpapi.dll.so 
+	mv lib64/wine_tmp/plugplay.exe lib64/wine/plugplay.exe 
+	mv lib64/wine_tmp/user32.dll lib64/wine/user32.dll 
+	mv lib64/wine_tmp/gdi32.dll lib64/wine/gdi32.dll 
+	mv lib64/wine_tmp/gdi32.so lib64/wine/gdi32.so 
+	mv lib64/wine_tmp/hidclass.sys lib64/wine/hidclass.sys 
+	mv lib64/wine_tmp/svchost.exe lib64/wine/svchost.exe 
+	mv lib64/wine_tmp/ucrtbase.so lib64/wine/ucrtbase.so 
+	mv lib64/wine_tmp/wevtsvc.dll lib64/wine/wevtsvc.dll 
+	mv lib64/wine_tmp/rpcrt4.dll lib64/wine/rpcrt4.dll 
+	mv lib64/wine_tmp/shell32.dll.so lib64/wine/shell32.dll.so 
+	mv lib64/wine_tmp/msvcrt.so lib64/wine/msvcrt.so 
+	mv lib64/wine_tmp/shcore.dll lib64/wine/shcore.dll 
+	mv lib64/wine_tmp/user32.so lib64/wine/user32.so 
+	mv lib64/wine_tmp/actxprxy.dll lib64/wine/actxprxy.dll
+	mv lib64/wine_tmp/oleaut32.dll lib64/wine/oleaut32.dll
+	mv lib64/wine_tmp/imm32.dll lib64/wine/imm32.dll
+	mv lib64/wine_tmp/hid.dll lib64/wine/hid.dll
+	mv lib64/wine_tmp/shlwapi.dll lib64/wine/shlwapi.dll
+	mv lib64/wine_tmp/combase.dll lib64/wine/combase.dll
+	mv lib64/wine_tmp/ole32.dll lib64/wine/ole32.dll
+	mv lib64/wine_tmp/explorer.exe lib64/wine/explorer.exe
+	mv lib64/wine_tmp/winemac.drv.so lib64/wine/winemac.drv.so 
+	mv lib64/wine_tmp/wineboot.exe lib64/wine/wineboot.exe
+	mv lib64/wine_tmp/rpcss.exe lib64/wine/rpcss.exe
+	
+	rm -r lib64/wine_tmp
+	
+	#Debug code to reduce spam in opensnoop
+	#cd "$WORKINGDIR"
+	#cp Contents/SharedSupport/prefix/drive_c/windows/system32/* Contents/SharedSupport/wine/lib64/wine
+
 else
-	echo "Error: directory x86_64-windows not found"
+	echo "directory x86_64-windows not found"
 fi
