@@ -63,6 +63,7 @@ if [ -d "windows/system32" ]; then
 	mv windows/system32_tmp/explorer.exe windows/system32/explorer.exe
 	mv windows/system32_tmp/gdi32.dll windows/system32/gdi32.dll
 	mv windows/system32_tmp/gdiplus.dll windows/system32/gdiplus.dll
+	mv windows/system32_tmp/hid.dll windows/system32/hid.dll
 	mv windows/system32_tmp/imm32.dll windows/system32/imm32.dll
 	mv windows/system32_tmp/iphlpapi.dll windows/system32/iphlpapi.dll
 	mv windows/system32_tmp/kernel32.dll windows/system32/kernel32.dll
@@ -374,53 +375,27 @@ elif [ -d "lib64/wine" ]; then
 
 	mv lib64/wine lib64/wine_tmp
 	mkdir lib64/wine
-
+	
 	mv lib64/wine_tmp/mountmgr.sys.so lib64/wine/mountmgr.sys.so
-	mv lib64/wine_tmp/ndis.sys lib64/wine/ndis.sys
-	mv lib64/wine_tmp/ntdll.dll lib64/wine/ntdll.dll
 	mv lib64/wine_tmp/ntdll.so lib64/wine/ntdll.so
 	mv lib64/wine_tmp/winebus.sys.so lib64/wine/winebus.sys.so
-	mv lib64/wine_tmp/winehid.sys lib64/wine/winehid.sys
-	mv lib64/wine_tmp/kernel32.dll lib64/wine/kernel32.dll 
-	mv lib64/wine_tmp/kernelbase.dll lib64/wine/kernelbase.dll 
-	mv lib64/wine_tmp/advapi32.dll lib64/wine/advapi32.dll 
-	mv lib64/wine_tmp/msvcrt.dll lib64/wine/msvcrt.dll 
-	mv lib64/wine_tmp/sechost.dll lib64/wine/sechost.dll 
-	mv lib64/wine_tmp/ucrtbase.dll lib64/wine/ucrtbase.dll 
-	mv lib64/wine_tmp/ws2_32.dll.so lib64/wine/ws2_32.dll.so 
-	mv lib64/wine_tmp/winemenubuilder.exe lib64/wine/winemenubuilder.exe 
-	mv lib64/wine_tmp/services.exe lib64/wine/services.exe 
-	mv lib64/wine_tmp/setupapi.dll lib64/wine/setupapi.dll 
-	mv lib64/wine_tmp/version.dll lib64/wine/version.dll 
-	mv lib64/wine_tmp/userenv.dll lib64/wine/userenv.dll 
-	mv lib64/wine_tmp/winedevice.exe lib64/wine/winedevice.exe 
-	mv lib64/wine_tmp/ntoskrnl.exe lib64/wine/ntoskrnl.exe
+	mv lib64/wine_tmp/winemac.drv.so lib64/wine/winemac.drv.so
+	mv lib64/wine_tmp/ws2_32.dll.so lib64/wine/ws2_32.dll.so
 	mv lib64/wine_tmp/iphlpapi.dll.so lib64/wine/iphlpapi.dll.so 
-	mv lib64/wine_tmp/plugplay.exe lib64/wine/plugplay.exe 
-	mv lib64/wine_tmp/user32.dll lib64/wine/user32.dll 
-	mv lib64/wine_tmp/gdi32.dll lib64/wine/gdi32.dll 
-	mv lib64/wine_tmp/gdi32.so lib64/wine/gdi32.so 
-	mv lib64/wine_tmp/hidclass.sys lib64/wine/hidclass.sys 
-	mv lib64/wine_tmp/svchost.exe lib64/wine/svchost.exe 
-	mv lib64/wine_tmp/ucrtbase.so lib64/wine/ucrtbase.so 
-	mv lib64/wine_tmp/wevtsvc.dll lib64/wine/wevtsvc.dll 
-	mv lib64/wine_tmp/rpcrt4.dll lib64/wine/rpcrt4.dll 
-	mv lib64/wine_tmp/shell32.dll.so lib64/wine/shell32.dll.so 
-	mv lib64/wine_tmp/msvcrt.so lib64/wine/msvcrt.so 
-	mv lib64/wine_tmp/shcore.dll lib64/wine/shcore.dll 
+	mv lib64/wine_tmp/shell32.dll.so lib64/wine/shell32.dll.so
+	mv lib64/wine_tmp/ucrtbase.so lib64/wine/ucrtbase.so
 	mv lib64/wine_tmp/user32.so lib64/wine/user32.so 
-	mv lib64/wine_tmp/actxprxy.dll lib64/wine/actxprxy.dll
-	mv lib64/wine_tmp/oleaut32.dll lib64/wine/oleaut32.dll
-	mv lib64/wine_tmp/imm32.dll lib64/wine/imm32.dll
-	mv lib64/wine_tmp/hid.dll lib64/wine/hid.dll
-	mv lib64/wine_tmp/shlwapi.dll lib64/wine/shlwapi.dll
-	mv lib64/wine_tmp/combase.dll lib64/wine/combase.dll
-	mv lib64/wine_tmp/ole32.dll lib64/wine/ole32.dll
-	mv lib64/wine_tmp/explorer.exe lib64/wine/explorer.exe
-	mv lib64/wine_tmp/winemac.drv.so lib64/wine/winemac.drv.so 
-	mv lib64/wine_tmp/wineboot.exe lib64/wine/wineboot.exe
-	mv lib64/wine_tmp/rpcss.exe lib64/wine/rpcss.exe
-	mv lib64/wine_tmp/opengl32.dll.so lib64/wine/opengl32.dll.so
+
+	mv lib64/wine_tmp/msvcrt.so lib64/wine/msvcrt.so 
+	mv lib64/wine_tmp/gdi32.so lib64/wine/gdi32.so 
+
+	mv lib64/wine_tmp/ndis.sys lib64/wine/ndis.sys
+	mv lib64/wine_tmp/winehid.sys lib64/wine/winehid.sys
+	mv lib64/wine_tmp/hidclass.sys lib64/wine/hidclass.sys
+	
+	mv lib64/wine_tmp/ntdll.dll lib64/wine/ntdll.dll
+	mv lib64/wine_tmp/ucrtbase.dll lib64/wine/ucrtbase.dll 
+	mv lib64/wine_tmp/user32.dll lib64/wine/user32.dll 
 	
 	rm -r lib64/wine_tmp
 	
