@@ -419,6 +419,7 @@ elif [ -d "lib64/wine" ]; then
 	mv lib64/wine_tmp/explorer.exe lib64/wine/explorer.exe
 	mv lib64/wine_tmp/winemac.drv.so lib64/wine/winemac.drv.so 
 	mv lib64/wine_tmp/wineboot.exe lib64/wine/wineboot.exe
+	mv lib64/wine_tmp/rpcss.exe lib64/wine/rpcss.exe
 	mv lib64/wine_tmp/opengl32.dll.so lib64/wine/opengl32.dll.so
 	
 	rm -r lib64/wine_tmp
