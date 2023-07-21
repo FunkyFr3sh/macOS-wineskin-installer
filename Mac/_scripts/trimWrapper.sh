@@ -1,8 +1,8 @@
 #!/bin/sh
 
-# The following script will reduce the filesize of a clean wineskin wrapper (40-60MB, depends on wine version)
+# The following script will reduce the filesize of a clean wineskin wrapper (30-60MB Compressed/pkg, depends on wine version)
 # Made for old games with little to no dependencies. Tested with Warcraft II, EV Nova, GTA
-# Tested with wine version WS11WineCX64Bit22.1.1-8, WS11WineCX64Bit21.2.0-1, WS11WineCX21.2.0-1, WS11WineCX20.0.4
+# Tested with wine version WS11WineCX64Bit22.1.1-8, WS11WineCX64Bit21.2.0-1, WS11WineCX21.2.0-1, WS11Wine64BitCX20.0.4, WS11WineCX20.0.4
 
 
 # cd current working directory
@@ -388,6 +388,7 @@ elif [ -d "lib64/wine" ]; then
 	
 	mv lib64/wine_tmp/mountmgr.sys.so lib64/wine/mountmgr.sys.so
 	mv lib64/wine_tmp/ntdll.so lib64/wine/ntdll.so
+	mv lib64/wine_tmp/ntdll.dll.so lib64/wine/ntdll.dll.so
 	mv lib64/wine_tmp/winebus.sys.so lib64/wine/winebus.sys.so
 	mv lib64/wine_tmp/winemac.drv.so lib64/wine/winemac.drv.so
 	mv lib64/wine_tmp/ws2_32.dll.so lib64/wine/ws2_32.dll.so
@@ -395,9 +396,16 @@ elif [ -d "lib64/wine" ]; then
 	mv lib64/wine_tmp/shell32.dll.so lib64/wine/shell32.dll.so
 	mv lib64/wine_tmp/ucrtbase.so lib64/wine/ucrtbase.so
 	mv lib64/wine_tmp/user32.so lib64/wine/user32.so 
-
+	mv lib64/wine_tmp/kernel32.dll.so lib64/wine/kernel32.dll.so
+	
 	mv lib64/wine_tmp/msvcrt.so lib64/wine/msvcrt.so 
 	mv lib64/wine_tmp/gdi32.so lib64/wine/gdi32.so 
+	
+	mv lib64/wine_tmp/wow64cpu.dll.so lib64/wine/wow64cpu.dll.so
+	mv lib64/wine_tmp/advapi32.dll.so lib64/wine/advapi32.dll.so
+	mv lib64/wine_tmp/gdi32.dll.so lib64/wine/gdi32.dll.so
+	mv lib64/wine_tmp/msvcrt.dll.so lib64/wine/msvcrt.dll.so
+	mv lib64/wine_tmp/user32.dll.so lib64/wine/user32.dll.so
 
 	mv lib64/wine_tmp/ndis.sys lib64/wine/ndis.sys
 	mv lib64/wine_tmp/winehid.sys lib64/wine/winehid.sys
