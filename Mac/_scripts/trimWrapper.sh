@@ -121,9 +121,11 @@ if [ -d "windows/syswow64" ]; then
 	mv windows/syswow64_tmp/api-ms-win-core-localization-l1-2-1.dll windows/syswow64/api-ms-win-core-localization-l1-2-1.dll 
 	mv windows/syswow64_tmp/api-ms-win-core-synch-l1-2-0.dll windows/syswow64/api-ms-win-core-synch-l1-2-0.dll
 	mv windows/syswow64_tmp/combase.dll windows/syswow64/combase.dll
+	mv windows/syswow64_tmp/bcrypt.dll windows/syswow64/bcrypt.dll
 	mv windows/syswow64_tmp/comctl32.dll windows/syswow64/comctl32.dll
 	mv windows/syswow64_tmp/comdlg32.dll windows/syswow64/comdlg32.dll
 	mv windows/syswow64_tmp/crtdll.dll windows/syswow64/crtdll.dll
+	mv windows/syswow64_tmp/crypt32.dll windows/syswow64/crypt32.dll
 	mv windows/syswow64_tmp/dbghelp.dll windows/syswow64/dbghelp.dll
 	mv windows/syswow64_tmp/ddraw.dll windows/syswow64/ddraw.dll
 	mv windows/syswow64_tmp/dnsapi.dll windows/syswow64/dnsapi.dll
