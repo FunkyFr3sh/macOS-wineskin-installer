@@ -256,6 +256,7 @@ elif [ -f "lib/wine/ntdll.dll" ]; then
 	mkdir lib/wine
 	
 	mv lib/wine_tmp/ntdll.dll lib/wine/ntdll.dll
+	mv lib/wine_tmp/gdi32.dll lib/wine/gdi32.dll
 	mv lib/wine_tmp/ucrtbase.dll lib/wine/ucrtbase.dll 
 	
 	rm -r lib/wine_tmp
