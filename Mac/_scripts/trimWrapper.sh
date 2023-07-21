@@ -151,6 +151,8 @@ if [ -d "windows/syswow64" ]; then
 	mv windows/syswow64_tmp/oledlg.dll windows/syswow64/oledlg.dll
 	mv windows/syswow64_tmp/opengl32.dll windows/syswow64/opengl32.dll
 	mv windows/syswow64_tmp/psapi.dll windows/syswow64/psapi.dll
+	mv windows/syswow64_tmp/rsaenh.dll windows/syswow64/rsaenh.dll
+	mv windows/syswow64_tmp/rasapi32.dll windows/syswow64/rasapi32.dll
 	mv windows/syswow64_tmp/riched20.dll windows/syswow64/riched20.dll
 	mv windows/syswow64_tmp/riched32.dll windows/syswow64/riched32.dll
 	mv windows/syswow64_tmp/rpcrt4.dll windows/syswow64/rpcrt4.dll
@@ -255,8 +257,10 @@ elif [ -f "lib/wine/ntdll.dll" ]; then
 	mv lib/wine lib/wine_tmp
 	mkdir lib/wine
 	
-	mv lib/wine_tmp/ntdll.dll lib/wine/ntdll.dll
+	mv lib/wine_tmp/crtdll.dll lib/wine/crtdll.dll
 	mv lib/wine_tmp/gdi32.dll lib/wine/gdi32.dll
+	mv lib/wine_tmp/msvcrt.dll lib/wine/msvcrt.dll
+	mv lib/wine_tmp/ntdll.dll lib/wine/ntdll.dll
 	mv lib/wine_tmp/ucrtbase.dll lib/wine/ucrtbase.dll 
 	
 	rm -r lib/wine_tmp
