@@ -1,8 +1,8 @@
 #!/bin/sh
 
-# The following script will reduce the filesize of a clean wineskin wrapper (30-60MB Compressed/pkg, depends on wine version)
+# The following script will reduce the filesize of a clean wineskin wrapper (25-50MB Compressed/pkg, depends on wine version)
 # Made for old games with little to no dependencies. Tested with Warcraft II, EV Nova, GTA
-# Tested with wine version WS11WineCX64Bit22.1.1-8, WS11WineCX64Bit21.2.0-1, WS11WineCX21.2.0-1, WS11Wine64BitCX20.0.4, WS11WineCX20.0.4
+# Tested with wine version WS11WineCX64Bit22.1.1-8, WS11WineCX64Bit21.2.0-1, WS11WineCX21.2.0-1, WS11WineCX64Bit20.0.4, WS11WineCX20.0.4
 
 
 # cd current working directory
