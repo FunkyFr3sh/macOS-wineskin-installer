@@ -1,8 +1,8 @@
 #!/bin/sh
 
-# The following script will reduce the filesize of a clean wineskin wrapper to less than 40MB
+# The following script will reduce the filesize of a clean wineskin wrapper (40-60MB, depends on wine version)
 # Made for old games with little to no dependencies. Tested with Warcraft II, EV Nova, GTA
-# Tested with wine version WS11WineCX64Bit22.1.1-8, WS11WineCX64Bit21.2.0-1
+# Tested with wine version WS11WineCX64Bit22.1.1-8, WS11WineCX64Bit21.2.0-1, WS11WineCX21.2.0-1
 
 
 # cd current working directory
@@ -48,36 +48,54 @@ if [ -d "windows/system32" ]; then
 	mkdir windows/system32
 
 	mv windows/system32_tmp/drivers windows/system32/drivers
-
+	
 	mv windows/system32_tmp/actxprxy.dll windows/system32/actxprxy.dll
 	mv windows/system32_tmp/advapi32.dll windows/system32/advapi32.dll
+	mv windows/system32_tmp/api-ms-win-core-fibers-l1-1-1.dll windows/system32/api-ms-win-core-fibers-l1-1-1.dll 
+	mv windows/system32_tmp/api-ms-win-core-localization-l1-2-1.dll windows/system32/api-ms-win-core-localization-l1-2-1.dll 
+	mv windows/system32_tmp/api-ms-win-core-synch-l1-2-0.dll windows/system32/api-ms-win-core-synch-l1-2-0.dll
 	mv windows/system32_tmp/bcrypt.dll windows/system32/bcrypt.dll
 	mv windows/system32_tmp/combase.dll windows/system32/combase.dll
 	mv windows/system32_tmp/comctl32.dll windows/system32/comctl32.dll
 	mv windows/system32_tmp/comdlg32.dll windows/system32/comdlg32.dll
 	mv windows/system32_tmp/crtdll.dll windows/system32/crtdll.dll
 	mv windows/system32_tmp/crypt32.dll windows/system32/crypt32.dll
+	mv windows/system32_tmp/dbghelp.dll windows/system32/dbghelp.dll
+	mv windows/system32_tmp/ddraw.dll windows/system32/ddraw.dll
+	mv windows/system32_tmp/dplayx.dll windows/system32/dplayx.dll
 	mv windows/system32_tmp/dnsapi.dll windows/system32/dnsapi.dll
 	mv windows/system32_tmp/dsound.dll windows/system32/dsound.dll
 	mv windows/system32_tmp/dwmapi.dll windows/system32/dwmapi.dll
 	mv windows/system32_tmp/explorer.exe windows/system32/explorer.exe
 	mv windows/system32_tmp/gdi32.dll windows/system32/gdi32.dll
 	mv windows/system32_tmp/gdiplus.dll windows/system32/gdiplus.dll
+	mv windows/system32_tmp/hal.dll windows/system32/hal.dll
 	mv windows/system32_tmp/hid.dll windows/system32/hid.dll
+	mv windows/system32_tmp/imagehlp.dll windows/system32/imagehlp.dll
+	mv windows/system32_tmp/imm32.dll windows/system32/imm32.dll
 	mv windows/system32_tmp/imm32.dll windows/system32/imm32.dll
 	mv windows/system32_tmp/iphlpapi.dll windows/system32/iphlpapi.dll
 	mv windows/system32_tmp/kernel32.dll windows/system32/kernel32.dll
 	mv windows/system32_tmp/kernelbase.dll windows/system32/kernelbase.dll
+	mv windows/system32_tmp/midimap.dll windows/system32/midimap.dll
 	mv windows/system32_tmp/mmdevapi.dll windows/system32/mmdevapi.dll
+	mv windows/system32_tmp/mpr.dll windows/system32/mpr.dll
 	mv windows/system32_tmp/msacm32.dll windows/system32/msacm32.dll
+	mv windows/system32_tmp/msftedit.dll windows/system32/msftedit.dll
+	mv windows/system32_tmp/msimg32.dll windows/system32/msimg32.dll
 	mv windows/system32_tmp/msvcrt.dll windows/system32/msvcrt.dll
+	mv windows/system32_tmp/ntdll.dll windows/system32/ntdll.dll
 	mv windows/system32_tmp/nsi.dll windows/system32/nsi.dll
 	mv windows/system32_tmp/ntoskrnl.exe windows/system32/ntoskrnl.exe
 	mv windows/system32_tmp/ole32.dll windows/system32/ole32.dll
 	mv windows/system32_tmp/oleaut32.dll windows/system32/oleaut32.dll
+	mv windows/system32_tmp/oledlg.dll windows/system32/oledlg.dll
 	mv windows/system32_tmp/opengl32.dll windows/system32/opengl32.dll
+	mv windows/system32_tmp/psapi.dll windows/system32/psapi.dll
 	mv windows/system32_tmp/plugplay.exe windows/system32/plugplay.exe
 	mv windows/system32_tmp/rasapi32.dll windows/system32/rasapi32.dll
+	mv windows/system32_tmp/riched20.dll windows/system32/riched20.dll
+	mv windows/system32_tmp/riched32.dll windows/system32/riched32.dll
 	mv windows/system32_tmp/rpcrt4.dll windows/system32/rpcrt4.dll
 	mv windows/system32_tmp/rpcss.exe windows/system32/rpcss.exe
 	mv windows/system32_tmp/rsaenh.dll windows/system32/rsaenh.dll
@@ -89,23 +107,29 @@ if [ -d "windows/system32" ]; then
 	mv windows/system32_tmp/shlwapi.dll windows/system32/shlwapi.dll
 	mv windows/system32_tmp/svchost.exe windows/system32/svchost.exe
 	mv windows/system32_tmp/ucrtbase.dll windows/system32/ucrtbase.dll
+	mv windows/system32_tmp/urlmon.dll windows/system32/urlmon.dll
 	mv windows/system32_tmp/user32.dll windows/system32/user32.dll
 	mv windows/system32_tmp/userenv.dll windows/system32/userenv.dll
+	mv windows/system32_tmp/usp10.dll windows/system32/usp10.dll
 	mv windows/system32_tmp/uxtheme.dll windows/system32/uxtheme.dll
 	mv windows/system32_tmp/version.dll windows/system32/version.dll
 	mv windows/system32_tmp/wevtsvc.dll windows/system32/wevtsvc.dll
 	mv windows/system32_tmp/win32u.dll windows/system32/win32u.dll
 	mv windows/system32_tmp/wineboot.exe windows/system32/wineboot.exe
+	mv windows/system32_tmp/winebrowser.exe windows/system32/winebrowser.exe
 	mv windows/system32_tmp/winecoreaudio.drv windows/system32/winecoreaudio.drv
 	mv windows/system32_tmp/winedevice.exe windows/system32/winedevice.exe
+	mv windows/system32_tmp/wined3d.dll windows/system32/wined3d.dll
 	mv windows/system32_tmp/winemac.drv windows/system32/winemac.drv
 	mv windows/system32_tmp/winemenubuilder.exe windows/system32/winemenubuilder.exe
+	mv windows/system32_tmp/wininet.dll windows/system32/wininet.dll
 	mv windows/system32_tmp/winmm.dll windows/system32/winmm.dll
 	mv windows/system32_tmp/winspool.drv windows/system32/winspool.drv
 	mv windows/system32_tmp/wow64.dll windows/system32/wow64.dll
 	mv windows/system32_tmp/wow64cpu.dll windows/system32/wow64cpu.dll
 	mv windows/system32_tmp/ws2_32.dll windows/system32/ws2_32.dll
-
+	mv windows/system32_tmp/wsock32.dll windows/system32/wsock32.dll
+	
 	rm -r windows/system32_tmp
 else
 	echo "directory system32 not found"
