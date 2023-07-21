@@ -170,6 +170,7 @@ if [ -d "windows/syswow64" ]; then
 	mv windows/syswow64_tmp/msftedit.dll windows/syswow64/msftedit.dll
 	mv windows/syswow64_tmp/msimg32.dll windows/syswow64/msimg32.dll
 	mv windows/syswow64_tmp/msvcrt.dll windows/syswow64/msvcrt.dll
+	mv windows/syswow64_tmp/netapi32.dll windows/syswow64/netapi32.dll
 	mv windows/syswow64_tmp/ntdll.dll windows/syswow64/ntdll.dll
 	mv windows/syswow64_tmp/nsi.dll windows/syswow64/nsi.dll
 	mv windows/syswow64_tmp/ole32.dll windows/syswow64/ole32.dll
