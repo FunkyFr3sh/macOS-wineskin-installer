@@ -278,7 +278,7 @@ if [ -d "lib/wine/i386-windows" ]; then
 	#cd Contents/SharedSupport/wine/
 
 elif [[ -f "lib/wine/ntdll.dll" || -f "lib/wine/kernelbase.dll" ]]; then	
-	#WS11WineCX64Bit21.2.0-1
+	#WS11WineCX64Bit21.2.0-1 and below
 	
 	mv lib/wine lib/wine_tmp
 	mkdir lib/wine
@@ -321,9 +321,63 @@ if [ -d "lib/wine/x86_32on64-unix" ]; then
 	mv lib/wine/x86_32on64-unix_tmp/ws2_32.so lib/wine/x86_32on64-unix/ws2_32.so
 
 	rm -r lib/wine/x86_32on64-unix_tmp
-elif [ -d "lib/wine/x86_32on64-unix" ]; then
-	#TODO: Add support for older wine versions
-	echo "directory x86_32on64-unix not found"
+elif [ -d "lib32on64/wine" ]; then
+	#WS11WineCX64Bit21.2.0-1 and below
+	
+	mv lib32on64/wine lib32on64/wine_tmp
+	mkdir lib32on64/wine
+
+	mv lib32on64/wine_tmp/*.dll lib32on64/wine
+
+	mv lib32on64/wine_tmp/dnsapi.so lib32on64/wine/dnsapi.so
+	mv lib32on64/wine_tmp/ntdll.so lib32on64/wine/ntdll.so
+	mv lib32on64/wine_tmp/opengl32.so lib32on64/wine/opengl32.so
+	mv lib32on64/wine_tmp/ws2_32.so lib32on64/wine/ws2_32.so
+	mv lib32on64/wine_tmp/kernel32.so lib32on64/wine/kernel32.so
+	mv lib32on64/wine_tmp/msvcrt.so lib32on64/wine/msvcrt.so
+	mv lib32on64/wine_tmp/advapi32.so lib32on64/wine/advapi32.so
+	mv lib32on64/wine_tmp/iphlpapi.so lib32on64/wine/iphlpapi.so
+	mv lib32on64/wine_tmp/shell32.so lib32on64/wine/shell32.so
+	mv lib32on64/wine_tmp/gdi32.so lib32on64/wine/gdi32.so
+	mv lib32on64/wine_tmp/user32.so lib32on64/wine/user32.so
+	mv lib32on64/wine_tmp/wow64cpu.so lib32on64/wine/wow64cpu.so
+	mv lib32on64/wine_tmp/crtdll.so lib32on64/wine/crtdll.so
+	mv lib32on64/wine_tmp/ucrtbase.so lib32on64/wine/ucrtbase.so
+	mv lib32on64/wine_tmp/bcrypt.so lib32on64/wine/bcrypt.so
+	mv lib32on64/wine_tmp/crypt32.so lib32on64/wine/crypt32.so
+	mv lib32on64/wine_tmp/netapi32.so lib32on64/wine/netapi32.so
+	mv lib32on64/wine_tmp/dbghelp.so lib32on64/wine/dbghelp.so
+
+	mv lib32on64/wine_tmp/dnsapi.dll.so lib32on64/wine/dnsapi.dll.so
+	mv lib32on64/wine_tmp/ntdll.dll.so lib32on64/wine/ntdll.dll.so
+	mv lib32on64/wine_tmp/opengl32.dll.so lib32on64/wine/opengl32.dll.so
+	mv lib32on64/wine_tmp/ws2_32.dll.so lib32on64/wine/ws2_32.dll.so
+	mv lib32on64/wine_tmp/kernel32.dll.so lib32on64/wine/kernel32.dll.so
+	mv lib32on64/wine_tmp/msvcrt.dll.so lib32on64/wine/msvcrt.dll.so
+	mv lib32on64/wine_tmp/advapi32.dll.so lib32on64/wine/advapi32.dll.so
+	mv lib32on64/wine_tmp/iphlpapi.dll.so lib32on64/wine/iphlpapi.dll.so
+	mv lib32on64/wine_tmp/shell32.dll.so lib32on64/wine/shell32.dll.so
+	mv lib32on64/wine_tmp/gdi32.dll.so lib32on64/wine/gdi32.dll.so
+	mv lib32on64/wine_tmp/user32.dll.so lib32on64/wine/user32.dll.so
+	mv lib32on64/wine_tmp/wow64cpu.dll.so lib32on64/wine/wow64cpu.dll.so
+	mv lib32on64/wine_tmp/crtdll.dll.so lib32on64/wine/crtdll.dll.so
+	mv lib32on64/wine_tmp/ucrtbase.dll.so lib32on64/wine/ucrtbase.dll.so
+	mv lib32on64/wine_tmp/bcrypt.dll.so lib32on64/wine/bcrypt.dll.so
+	mv lib32on64/wine_tmp/crypt32.dll.so lib32on64/wine/crypt32.dll.so
+	mv lib32on64/wine_tmp/netapi32.dll.so lib32on64/wine/netapi32.dll.so
+	mv lib32on64/wine_tmp/dbghelp.dll.so lib32on64/wine/dbghelp.dll.so
+	
+	mv lib32on64/wine_tmp/mountmgr.sys.so lib32on64/wine/mountmgr.sys.so
+	mv lib32on64/wine_tmp/winebus.sys.so lib32on64/wine/winebus.sys.so
+	
+	mv lib32on64/wine_tmp/winspool.drv.so lib32on64/wine/winspool.drv.so
+	mv lib32on64/wine_tmp/winecoreaudio.drv.so lib32on64/wine/winecoreaudio.drv.so
+	mv lib32on64/wine_tmp/winemac.drv.so lib32on64/wine/winemac.drv.so
+	mv lib32on64/wine_tmp/winejoystick.drv.so lib32on64/wine/winejoystick.drv.so
+	
+	mv lib32on64/wine_tmp/hidclass.sys lib32on64/wine/hidclass.sys
+	
+	rm -r lib32on64/wine_tmp
 else
 	echo "directory x86_32on64-unix not found"
 fi
@@ -381,7 +435,7 @@ if [ -d "lib/wine/x86_64-windows" ]; then
 	#cp Contents/SharedSupport/prefix/drive_c/windows/system32/* Contents/SharedSupport/wine/lib/wine/x86_64-windows
 	
 elif [ -d "lib64/wine" ]; then
-	#WS11WineCX64Bit21.2.0-1
+	#WS11WineCX64Bit21.2.0-1 and below
 
 	mv lib64/wine lib64/wine_tmp
 	mkdir lib64/wine
