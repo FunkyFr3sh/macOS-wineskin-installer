@@ -88,6 +88,7 @@ if [ -d "windows/system32" ]; then
 	mv system32_tmp/imm32.dll system32
 	mv system32_tmp/iphlpapi.dll system32
 	mv system32_tmp/jsproxy.dll system32
+	mv system32_tmp/kerberos.dll system32
 	mv system32_tmp/kernel32.dll system32
 	mv system32_tmp/kernelbase.dll system32
 	mv system32_tmp/midimap.dll system32
@@ -196,6 +197,7 @@ if [ -d "windows/syswow64" ]; then
 	mv syswow64_tmp/imagehlp.dll syswow64
 	mv syswow64_tmp/imm32.dll syswow64
 	mv syswow64_tmp/iphlpapi.dll syswow64
+	mv syswow64_tmp/kerberos.dll syswow64
 	mv syswow64_tmp/kernel32.dll syswow64
 	mv syswow64_tmp/kernelbase.dll syswow64
 	mv syswow64_tmp/jsproxy.dll syswow64
@@ -350,6 +352,7 @@ if [ -d "lib/wine/i386-windows" ]; then
 	mv i386-windows_tmp/ntdll.dll i386-windows
 	mv i386-windows_tmp/winecoreaudio.drv i386-windows
 	mv i386-windows_tmp/ws2_32.dll i386-windows
+	mv i386-windows_tmp/crypt32.dll i386-windows
 
 	rm -r i386-windows_tmp
 	
@@ -401,17 +404,26 @@ if [ -d "lib/wine/x86_32on64-unix" ]; then
 	mkdir x86_32on64-unix
 
 	mv x86_32on64-unix_tmp/dnsapi.so x86_32on64-unix
-	mv x86_32on64-unix_tmp/libwine.1.0.dylib x86_32on64-unix
-	mv x86_32on64-unix_tmp/libwine.1.dylib x86_32on64-unix
-	mv x86_32on64-unix_tmp/mountmgr.so x86_32on64-unix
-	mv x86_32on64-unix_tmp/nsiproxy.so x86_32on64-unix
 	mv x86_32on64-unix_tmp/ntdll.so x86_32on64-unix
 	mv x86_32on64-unix_tmp/opengl32.dll.so x86_32on64-unix
+	mv x86_32on64-unix_tmp/ws2_32.so x86_32on64-unix
+	mv x86_32on64-unix_tmp/nsiproxy.so x86_32on64-unix
 	mv x86_32on64-unix_tmp/win32u.dll.so x86_32on64-unix
+	mv x86_32on64-unix_tmp/user32.dll.so x86_32on64-unix
+	mv x86_32on64-unix_tmp/bcrypt.so x86_32on64-unix
+	mv x86_32on64-unix_tmp/crypt32.so x86_32on64-unix
+	mv x86_32on64-unix_tmp/netapi32.so x86_32on64-unix
+	mv x86_32on64-unix_tmp/secur32.so x86_32on64-unix
+	
+	mv x86_32on64-unix_tmp/mountmgr.so x86_32on64-unix
 	mv x86_32on64-unix_tmp/winebus.so x86_32on64-unix
+	
+	mv x86_32on64-unix_tmp/winspool.so x86_32on64-unix
 	mv x86_32on64-unix_tmp/winecoreaudio.so x86_32on64-unix
 	mv x86_32on64-unix_tmp/winemac.drv.so x86_32on64-unix
-	mv x86_32on64-unix_tmp/ws2_32.so x86_32on64-unix
+	
+	mv x86_32on64-unix_tmp/libwine.1.0.dylib x86_32on64-unix
+	mv x86_32on64-unix_tmp/libwine.1.dylib x86_32on64-unix
 
 	rm -r x86_32on64-unix_tmp
 	
@@ -432,42 +444,20 @@ elif [ -d "lib32on64/wine" ]; then
 	mv wine_tmp/ntdll.so wine
 	mv wine_tmp/opengl32.so wine
 	mv wine_tmp/ws2_32.so wine
-	mv wine_tmp/kernel32.so wine
-	mv wine_tmp/msvcrt.so wine
-	mv wine_tmp/advapi32.so wine
-	mv wine_tmp/iphlpapi.so wine
-	mv wine_tmp/shell32.so wine
-	mv wine_tmp/gdi32.so wine
 	mv wine_tmp/user32.so wine
-	mv wine_tmp/wow64cpu.so wine
-	mv wine_tmp/crtdll.so wine
-	mv wine_tmp/ucrtbase.so wine
 	mv wine_tmp/bcrypt.so wine
 	mv wine_tmp/crypt32.so wine
 	mv wine_tmp/netapi32.so wine
-	mv wine_tmp/dbghelp.so wine
-	mv wine_tmp/wldap32.so wine
 	mv wine_tmp/secur32.so wine
 
 	mv wine_tmp/dnsapi.dll.so wine
 	mv wine_tmp/ntdll.dll.so wine
 	mv wine_tmp/opengl32.dll.so wine
 	mv wine_tmp/ws2_32.dll.so wine
-	mv wine_tmp/kernel32.dll.so wine
-	mv wine_tmp/msvcrt.dll.so wine
-	mv wine_tmp/advapi32.dll.so wine
-	mv wine_tmp/iphlpapi.dll.so wine
-	mv wine_tmp/shell32.dll.so wine
-	mv wine_tmp/gdi32.dll.so wine
 	mv wine_tmp/user32.dll.so wine
-	mv wine_tmp/wow64cpu.dll.so wine
-	mv wine_tmp/crtdll.dll.so wine
-	mv wine_tmp/ucrtbase.dll.so wine
 	mv wine_tmp/bcrypt.dll.so wine
 	mv wine_tmp/crypt32.dll.so wine
 	mv wine_tmp/netapi32.dll.so wine
-	mv wine_tmp/dbghelp.dll.so wine
-	mv wine_tmp/wldap32.dll.so wine
 	mv wine_tmp/secur32.dll.so wine
 	
 	mv wine_tmp/mountmgr.sys.so wine
@@ -479,6 +469,30 @@ elif [ -d "lib32on64/wine" ]; then
 	mv wine_tmp/winejoystick.drv.so wine
 	
 	mv wine_tmp/hidclass.sys wine
+	
+	mv wine_tmp/kernel32.so wine
+	mv wine_tmp/msvcrt.so wine
+	mv wine_tmp/advapi32.so wine
+	mv wine_tmp/iphlpapi.so wine
+	mv wine_tmp/shell32.so wine
+	mv wine_tmp/gdi32.so wine
+	mv wine_tmp/wow64cpu.so wine
+	mv wine_tmp/crtdll.so wine
+	mv wine_tmp/ucrtbase.so wine
+	mv wine_tmp/dbghelp.so wine
+	mv wine_tmp/wldap32.so wine
+	
+	mv wine_tmp/kernel32.dll.so wine
+	mv wine_tmp/msvcrt.dll.so wine
+	mv wine_tmp/advapi32.dll.so wine
+	mv wine_tmp/iphlpapi.dll.so wine
+	mv wine_tmp/shell32.dll.so wine
+	mv wine_tmp/gdi32.dll.so wine
+	mv wine_tmp/wow64cpu.dll.so wine
+	mv wine_tmp/crtdll.dll.so wine
+	mv wine_tmp/ucrtbase.dll.so wine
+	mv wine_tmp/dbghelp.dll.so wine
+	mv wine_tmp/wldap32.dll.so wine
 	
 	rm -r wine_tmp
 	
