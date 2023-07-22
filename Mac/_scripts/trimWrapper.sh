@@ -409,7 +409,7 @@ if [ -d "lib/wine/x86_32on64-unix" ]; then
 	mv x86_32on64-unix_tmp/ws2_32.so x86_32on64-unix
 	mv x86_32on64-unix_tmp/nsiproxy.so x86_32on64-unix
 	mv x86_32on64-unix_tmp/win32u.dll.so x86_32on64-unix
-	mv x86_32on64-unix_tmp/user32.dll.so x86_32on64-unix
+	mv x86_32on64-unix_tmp/user32.so x86_32on64-unix
 	mv x86_32on64-unix_tmp/bcrypt.so x86_32on64-unix
 	mv x86_32on64-unix_tmp/crypt32.so x86_32on64-unix
 	mv x86_32on64-unix_tmp/netapi32.so x86_32on64-unix
