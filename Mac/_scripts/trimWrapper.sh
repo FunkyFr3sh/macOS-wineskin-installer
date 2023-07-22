@@ -4,20 +4,18 @@
 # Made for old games with little to no dependencies. Tested with Warcraft II, EV Nova, GTA
 # Tested with wine version WS11WineCX64Bit22.1.1-8, WS11WineCX64Bit21.2.0-1, WS11WineCX21.2.0-1, WS11WineCX64Bit20.0.4, WS11WineCX20.0.4
 
+
 echo ""
 
-# cd current working directory
 WORKINGDIR=$(cd "$(dirname "$BASH_SOURCE")"; cd -P "$(dirname "$(readlink "$BASH_SOURCE" || echo .)")"; pwd)
 cd "$WORKINGDIR"
-
-# make sure we are in the right directory
-[ ! -d "Contents/SharedSupport/prefix/drive_c" ] && echo "Error: Script must be placed inside of a wineskin wrapped app, aborting..." && exit 1
+[ ! -d "drive_c/windows/system32" ] && echo "Error: Script must be placed inside of a wineskin wrapped app, aborting..." && exit 1
 
 
-cd Contents
-
-if [ -d "Frameworks" ]; then
+if [ -d "Contents/Frameworks" ]; then
 	echo "Trimming Contents/Frameworks:"
+	
+	cd Contents
 	
 	mv Frameworks Frameworks_tmp
 	mkdir Frameworks
@@ -40,6 +38,8 @@ if [ -d "Frameworks" ]; then
 
 	rm -r Frameworks_tmp
 	
+	cd ..
+	
 	echo ""
 else
 	echo "Directory Contents/Frameworks not found"
@@ -47,7 +47,7 @@ else
 fi
 
 
-cd SharedSupport/prefix/drive_c/
+cd drive_c
 
 if [ -d "windows/system32" ]; then
 	echo "Trimming drive_c/windows/system32:"
@@ -322,7 +322,7 @@ if [ -d "lib/wine/i386-windows" ]; then
 	
 	#Debug code to reduce spam in opensnoop
 	#cd "$WORKINGDIR"
-	#cp Contents/SharedSupport/prefix/drive_c/windows/syswow64/* Contents/SharedSupport/wine/lib/wine/i386-windows
+	#cp drive_c/windows/syswow64/* Contents/SharedSupport/wine/lib/wine/i386-windows
 	#cd Contents/SharedSupport/wine/lib/wine
 	
 	cd ../..
@@ -346,7 +346,7 @@ elif [[ -f "lib/wine/ntdll.dll" || -f "lib/wine/kernelbase.dll" ]]; then
 	
 	#Debug code to reduce spam in opensnoop
 	#cd "$WORKINGDIR"
-	#cp Contents/SharedSupport/prefix/drive_c/windows/syswow64/* Contents/SharedSupport/wine/lib/wine
+	#cp drive_c/windows/syswow64/* Contents/SharedSupport/wine/lib/wine
 	#cd Contents/SharedSupport/wine/lib
 	
 	cd ..
@@ -508,7 +508,7 @@ if [ -d "lib/wine/x86_64-windows" ]; then
 	
 	#Debug code to reduce spam in opensnoop
 	#cd "$WORKINGDIR"
-	#cp Contents/SharedSupport/prefix/drive_c/windows/system32/* Contents/SharedSupport/wine/lib/wine/x86_64-windows
+	#cp drive_c/windows/system32/* Contents/SharedSupport/wine/lib/wine/x86_64-windows
 	
 	cd ../..
 	
@@ -554,7 +554,7 @@ elif [ -d "lib64/wine" ]; then
 	
 	#Debug code to reduce spam in opensnoop
 	#cd "$WORKINGDIR"
-	#cp Contents/SharedSupport/prefix/drive_c/windows/system32/* Contents/SharedSupport/wine/lib64/wine
+	#cp drive_c/windows/system32/* Contents/SharedSupport/wine/lib64/wine
 
 	cd ..
 	
