@@ -42,7 +42,7 @@ if [ -d "Frameworks" ]; then
 	
 	echo ""
 else
-	echo "directory Frameworks not found"
+	echo "Directory Contents/Frameworks not found"
 	echo ""
 fi
 
@@ -145,7 +145,7 @@ if [ -d "windows/system32" ]; then
 	
 	echo ""
 else
-	echo "directory system32 not found"
+	echo "Directory drive_c/windows/system32 not found"
 	echo ""
 fi
 
@@ -229,7 +229,7 @@ if [ -d "windows/syswow64" ]; then
 	
 	echo ""
 else
-	echo "directory syswow64 not found"
+	echo "Directory drive_c/windows/syswow64 not found"
 	echo ""
 fi
 
@@ -256,7 +256,7 @@ if [ -d "windows/winsxs" ]; then
 	
 	echo ""
 else
-	echo "directory winsxs not found"
+	echo "Directory drive_c/windows/winsxs not found"
 	echo ""
 fi
 
@@ -278,7 +278,7 @@ if [ -d "windows" ]; then
 	
 	echo ""
 else
-	echo "directory windows not found"
+	echo "Directory drive_c/windows not found"
 	echo ""
 fi
 
@@ -352,7 +352,7 @@ elif [[ -f "lib/wine/ntdll.dll" || -f "lib/wine/kernelbase.dll" ]]; then
 	
 	echo ""
 else
-	echo "directory i386-windows not found"
+	echo "Directory lib/wine/i386-windows not found"
 	echo ""
 fi
 
@@ -447,7 +447,7 @@ elif [ -d "lib32on64/wine" ]; then
 	
 	echo ""
 else
-	echo "directory x86_32on64-unix not found"
+	echo "Directory lib/wine/x86_32on64-unix not found"
 	echo ""
 fi
 
@@ -477,7 +477,7 @@ if [ -d "lib/wine/x86_64-unix" ]; then
 	
 	echo ""
 else
-	echo "directory x86_64-unix not found"
+	echo "Directory lib/wine/x86_64-unix not found"
 	echo ""
 fi
 
@@ -559,6 +559,6 @@ elif [ -d "lib64/wine" ]; then
 	
 	echo ""
 else
-	echo "directory x86_64-windows not found"
+	echo "Directory lib/wine/x86_64-windows not found"
 	echo ""
 fi
