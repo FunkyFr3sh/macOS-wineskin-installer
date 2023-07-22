@@ -114,6 +114,7 @@ if [ -d "windows/system32" ]; then
 	mv system32_tmp/rpcrt4.dll system32
 	mv system32_tmp/rpcss.exe system32
 	mv system32_tmp/rsaenh.dll system32
+	mv system32_tmp/rstrtmgr.dll system32
 	mv system32_tmp/rundll32.exe system32
 	mv system32_tmp/schannel.dll system32
 	mv system32_tmp/sechost.dll system32
@@ -219,6 +220,7 @@ if [ -d "windows/syswow64" ]; then
 	mv syswow64_tmp/psapi.dll syswow64
 	mv syswow64_tmp/plugplay.exe syswow64
 	mv syswow64_tmp/rsaenh.dll syswow64
+	mv syswow64_tmp/rstrtmgr.dll syswow64
 	mv syswow64_tmp/rundll32.exe syswow64
 	mv syswow64_tmp/rasapi32.dll syswow64
 	mv syswow64_tmp/riched20.dll syswow64
