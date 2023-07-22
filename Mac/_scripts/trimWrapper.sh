@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # The following script will reduce the filesize of a clean wineskin wrapper (25-50MB Compressed/pkg, depends on wine version)
-# Made for old games with little to no dependencies. Tested with Warcraft II, EV Nova, GTA
+# Made for old games with little to no dependencies. Tested with Warcraft II, EV Nova, GTA, Dune 2000, Tiberian Sun
 # Tested with wine version WS11WineCX64Bit22.1.1-8, WS11WineCX64Bit21.2.0-1, WS11WineCX21.2.0-1, WS11WineCX64Bit20.0.4, WS11WineCX20.0.4
 
 
@@ -65,9 +65,11 @@ if [ -d "windows/system32" ]; then
 	mv system32_tmp/api-ms-win-core-localization-l1-2-1.dll system32
 	mv system32_tmp/api-ms-win-core-synch-l1-2-0.dll system32
 	mv system32_tmp/bcrypt.dll system32
+	mv system32_tmp/cmd.exe system32
 	mv system32_tmp/combase.dll system32
 	mv system32_tmp/comctl32.dll system32
 	mv system32_tmp/comdlg32.dll system32
+	mv system32_tmp/conhost.exe system32
 	mv system32_tmp/crtdll.dll system32
 	mv system32_tmp/crypt32.dll system32
 	mv system32_tmp/dbghelp.dll system32
@@ -77,6 +79,7 @@ if [ -d "windows/system32" ]; then
 	mv system32_tmp/dsound.dll system32
 	mv system32_tmp/dwmapi.dll system32
 	mv system32_tmp/explorer.exe system32
+	mv system32_tmp/explorerframe.dll system32
 	mv system32_tmp/gdi32.dll system32
 	mv system32_tmp/gdiplus.dll system32
 	mv system32_tmp/hal.dll system32
@@ -84,6 +87,7 @@ if [ -d "windows/system32" ]; then
 	mv system32_tmp/imagehlp.dll system32
 	mv system32_tmp/imm32.dll system32
 	mv system32_tmp/iphlpapi.dll system32
+	mv system32_tmp/jsproxy.dll system32
 	mv system32_tmp/kernel32.dll system32
 	mv system32_tmp/kernelbase.dll system32
 	mv system32_tmp/midimap.dll system32
@@ -109,7 +113,10 @@ if [ -d "windows/system32" ]; then
 	mv system32_tmp/rpcrt4.dll system32
 	mv system32_tmp/rpcss.exe system32
 	mv system32_tmp/rsaenh.dll system32
+	mv system32_tmp/rundll32.exe system32
+	mv system32_tmp/schannel.dll system32
 	mv system32_tmp/sechost.dll system32
+	mv system32_tmp/secur32.dll system32
 	mv system32_tmp/services.exe system32
 	mv system32_tmp/setupapi.dll system32
 	mv system32_tmp/shcore.dll system32
@@ -134,7 +141,9 @@ if [ -d "windows/system32" ]; then
 	mv system32_tmp/winemenubuilder.exe system32
 	mv system32_tmp/wininet.dll system32
 	mv system32_tmp/winmm.dll system32
+	mv system32_tmp/winhttp.dll system32
 	mv system32_tmp/winspool.drv system32
+	mv system32_tmp/wldap32.dll system32
 	mv system32_tmp/wow64.dll system32
 	mv system32_tmp/wow64cpu.dll system32
 	mv system32_tmp/ws2_32.dll system32
@@ -158,15 +167,18 @@ if [ -d "windows/syswow64" ]; then
 
 	mv syswow64 syswow64_tmp
 	mkdir syswow64
-
+	
+	mv syswow64_tmp/actxprxy.dll syswow64
 	mv syswow64_tmp/advapi32.dll syswow64
 	mv syswow64_tmp/api-ms-win-core-fibers-l1-1-1.dll syswow64
 	mv syswow64_tmp/api-ms-win-core-localization-l1-2-1.dll syswow64
 	mv syswow64_tmp/api-ms-win-core-synch-l1-2-0.dll syswow64
 	mv syswow64_tmp/combase.dll syswow64
 	mv syswow64_tmp/bcrypt.dll syswow64
+	mv syswow64_tmp/cmd.exe syswow64
 	mv syswow64_tmp/comctl32.dll syswow64
 	mv syswow64_tmp/comdlg32.dll syswow64
+	mv syswow64_tmp/conhost.exe syswow64
 	mv syswow64_tmp/crtdll.dll syswow64
 	mv syswow64_tmp/crypt32.dll syswow64
 	mv syswow64_tmp/dbghelp.dll syswow64
@@ -175,13 +187,18 @@ if [ -d "windows/syswow64" ]; then
 	mv syswow64_tmp/dplayx.dll syswow64
 	mv syswow64_tmp/dsound.dll syswow64
 	mv syswow64_tmp/dwmapi.dll syswow64
+	mv syswow64_tmp/explorer.exe syswow64
+	mv syswow64_tmp/explorerframe.dll syswow64
 	mv syswow64_tmp/gdi32.dll syswow64
 	mv syswow64_tmp/gdiplus.dll syswow64
+	mv syswow64_tmp/hal.dll syswow64
+	mv syswow64_tmp/hid.dll syswow64
 	mv syswow64_tmp/imagehlp.dll syswow64
 	mv syswow64_tmp/imm32.dll syswow64
 	mv syswow64_tmp/iphlpapi.dll syswow64
 	mv syswow64_tmp/kernel32.dll syswow64
 	mv syswow64_tmp/kernelbase.dll syswow64
+	mv syswow64_tmp/jsproxy.dll syswow64
 	mv syswow64_tmp/midimap.dll syswow64
 	mv syswow64_tmp/mmdevapi.dll syswow64
 	mv syswow64_tmp/mpr.dll syswow64
@@ -192,38 +209,54 @@ if [ -d "windows/syswow64" ]; then
 	mv syswow64_tmp/netapi32.dll syswow64
 	mv syswow64_tmp/ntdll.dll syswow64
 	mv syswow64_tmp/nsi.dll syswow64
+	mv syswow64_tmp/ntoskrnl.exe syswow64
 	mv syswow64_tmp/ole32.dll syswow64
 	mv syswow64_tmp/oleaut32.dll syswow64
 	mv syswow64_tmp/oledlg.dll syswow64
 	mv syswow64_tmp/opengl32.dll syswow64
 	mv syswow64_tmp/psapi.dll syswow64
+	mv syswow64_tmp/plugplay.exe syswow64
 	mv syswow64_tmp/rsaenh.dll syswow64
+	mv syswow64_tmp/rundll32.exe syswow64
 	mv syswow64_tmp/rasapi32.dll syswow64
 	mv syswow64_tmp/riched20.dll syswow64
 	mv syswow64_tmp/riched32.dll syswow64
 	mv syswow64_tmp/rpcrt4.dll syswow64
+	mv syswow64_tmp/rpcss.exe syswow64
+	mv syswow64_tmp/schannel.dll syswow64
 	mv syswow64_tmp/sechost.dll syswow64
+	mv syswow64_tmp/secur32.dll syswow64
+	mv syswow64_tmp/services.exe syswow64
 	mv syswow64_tmp/setupapi.dll syswow64
 	mv syswow64_tmp/shcore.dll syswow64
 	mv syswow64_tmp/shell32.dll syswow64
 	mv syswow64_tmp/shlwapi.dll syswow64
+	mv syswow64_tmp/svchost.exe syswow64
 	mv syswow64_tmp/ucrtbase.dll syswow64
 	mv syswow64_tmp/urlmon.dll syswow64
 	mv syswow64_tmp/user32.dll syswow64
+	mv syswow64_tmp/userenv.dll syswow64
 	mv syswow64_tmp/usp10.dll syswow64
 	mv syswow64_tmp/uxtheme.dll syswow64
 	mv syswow64_tmp/version.dll syswow64
+	mv syswow64_tmp/wevtsvc.dll syswow64
 	mv syswow64_tmp/win32u.dll syswow64
+	mv syswow64_tmp/wineboot.exe syswow64
 	mv syswow64_tmp/winebrowser.exe syswow64
 	mv syswow64_tmp/winecoreaudio.drv syswow64
+	mv syswow64_tmp/winedevice.exe syswow64
 	mv syswow64_tmp/wined3d.dll syswow64
 	mv syswow64_tmp/winemac.drv syswow64
 	mv syswow64_tmp/wininet.dll syswow64
 	mv syswow64_tmp/winmm.dll syswow64
+	mv syswow64_tmp/winhttp.dll syswow64
 	mv syswow64_tmp/winspool.drv syswow64
+	mv syswow64_tmp/wldap32.dll syswow64
+	mv syswow64_tmp/wow64.dll syswow64
+	mv syswow64_tmp/wow64cpu.dll syswow64
 	mv syswow64_tmp/ws2_32.dll syswow64
 	mv syswow64_tmp/wsock32.dll syswow64
-
+	
 	rm -r syswow64_tmp
 	
 	cd ..
@@ -341,6 +374,7 @@ elif [[ -f "lib/wine/ntdll.dll" || -f "lib/wine/kernelbase.dll" ]]; then
 	mv wine_tmp/msvcrt.dll wine
 	mv wine_tmp/ntdll.dll wine
 	mv wine_tmp/ucrtbase.dll wine
+	mv wine_tmp/crypt32.dll wine
 	
 	rm -r wine_tmp
 	
@@ -412,6 +446,8 @@ elif [ -d "lib32on64/wine" ]; then
 	mv wine_tmp/crypt32.so wine
 	mv wine_tmp/netapi32.so wine
 	mv wine_tmp/dbghelp.so wine
+	mv wine_tmp/wldap32.so wine
+	mv wine_tmp/secur32.so wine
 
 	mv wine_tmp/dnsapi.dll.so wine
 	mv wine_tmp/ntdll.dll.so wine
@@ -431,6 +467,8 @@ elif [ -d "lib32on64/wine" ]; then
 	mv wine_tmp/crypt32.dll.so wine
 	mv wine_tmp/netapi32.dll.so wine
 	mv wine_tmp/dbghelp.dll.so wine
+	mv wine_tmp/wldap32.dll.so wine
+	mv wine_tmp/secur32.dll.so wine
 	
 	mv wine_tmp/mountmgr.sys.so wine
 	mv wine_tmp/winebus.sys.so wine
