@@ -293,7 +293,7 @@ echo ""
 
 
 cd "$WORKINGDIR"
-[ ! -d "Contents/SharedSupport/wine" ] && echo "directory wine not found" && exit 1
+[ ! -d "Contents/SharedSupport/wine" ] && echo "Error: Directory Contents/SharedSupport/wine not found, aborting..." && exit 1
 cd Contents/SharedSupport/wine/
 
 
