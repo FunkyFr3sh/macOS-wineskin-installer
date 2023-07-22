@@ -93,6 +93,7 @@ if [ -d "windows/system32" ]; then
 	mv system32_tmp/msftedit.dll system32
 	mv system32_tmp/msimg32.dll system32
 	mv system32_tmp/msvcrt.dll system32
+	mv system32_tmp/netapi32.dll system32
 	mv system32_tmp/ntdll.dll system32
 	mv system32_tmp/nsi.dll system32
 	mv system32_tmp/ntoskrnl.exe system32
