@@ -4,6 +4,7 @@
 # Made for old games with little to no dependencies. Tested with Warcraft II, EV Nova, GTA
 # Tested with wine version WS11WineCX64Bit22.1.1-8, WS11WineCX64Bit21.2.0-1, WS11WineCX21.2.0-1, WS11Wine64BitCX20.0.4, WS11WineCX20.0.4
 
+echo ""
 
 # cd current working directory
 WORKINGDIR=$(cd "$(dirname "$BASH_SOURCE")"; cd -P "$(dirname "$(readlink "$BASH_SOURCE" || echo .)")"; pwd)
@@ -16,466 +17,548 @@ cd "$WORKINGDIR"
 cd Contents
 
 if [ -d "Frameworks" ]; then
+	echo "Trimming Contents/Frameworks:"
+	
 	mv Frameworks Frameworks_tmp
 	mkdir Frameworks
 
-	mv Frameworks_tmp/ObjectiveC_Extension.framework Frameworks/ObjectiveC_Extension.framework
+	mv Frameworks_tmp/ObjectiveC_Extension.framework Frameworks
 
-	mv Frameworks_tmp/libbrotlicommon.1.0.9.dylib Frameworks/libbrotlicommon.1.0.9.dylib
-	mv Frameworks_tmp/libbrotlicommon.1.dylib Frameworks/libbrotlicommon.1.dylib
-	mv Frameworks_tmp/libbrotlicommon.dylib Frameworks/libbrotlicommon.dylib
-	mv Frameworks_tmp/libbrotlidec.1.0.9.dylib Frameworks/libbrotlidec.1.0.9.dylib
-	mv Frameworks_tmp/libbrotlidec.1.dylib Frameworks/libbrotlidec.1.dylib
-	mv Frameworks_tmp/libbrotlidec.dylib Frameworks/libbrotlidec.dylib
-	mv Frameworks_tmp/libfreetype.6.dylib Frameworks/libfreetype.6.dylib
-	mv Frameworks_tmp/libfreetype.dylib Frameworks/libfreetype.dylib
-	mv Frameworks_tmp/libpng.dylib Frameworks/libpng.dylib
-	mv Frameworks_tmp/libpng16.16.dylib Frameworks/libpng16.16.dylib
-	mv Frameworks_tmp/libpng16.dylib Frameworks/libpng16.dylib
-	mv Frameworks_tmp/libwine.1.0.dylib Frameworks/libwine.1.0.dylib
-	mv Frameworks_tmp/libwine.1.dylib Frameworks/libwine.1.dylib
+	mv Frameworks_tmp/libbrotlicommon.1.0.9.dylib Frameworks
+	mv Frameworks_tmp/libbrotlicommon.1.dylib Frameworks
+	mv Frameworks_tmp/libbrotlicommon.dylib Frameworks
+	mv Frameworks_tmp/libbrotlidec.1.0.9.dylib Frameworks
+	mv Frameworks_tmp/libbrotlidec.1.dylib Frameworks
+	mv Frameworks_tmp/libbrotlidec.dylib Frameworks
+	mv Frameworks_tmp/libfreetype.6.dylib Frameworks
+	mv Frameworks_tmp/libfreetype.dylib Frameworks
+	mv Frameworks_tmp/libpng.dylib Frameworks
+	mv Frameworks_tmp/libpng16.16.dylib Frameworks
+	mv Frameworks_tmp/libpng16.dylib Frameworks
+	mv Frameworks_tmp/libwine.1.0.dylib Frameworks
+	mv Frameworks_tmp/libwine.1.dylib Frameworks
 
 	rm -r Frameworks_tmp
+	
+	echo ""
 else
 	echo "directory Frameworks not found"
+	echo ""
 fi
 
 
 cd SharedSupport/prefix/drive_c/
 
 if [ -d "windows/system32" ]; then
-	mv windows/system32 windows/system32_tmp
-	mkdir windows/system32
+	echo "Trimming drive_c/windows/system32:"
+	
+	cd windows
+	
+	mv system32 system32_tmp
+	mkdir system32
 
-	mv windows/system32_tmp/drivers windows/system32/drivers
+	mv system32_tmp/drivers system32
 	
-	mv windows/system32_tmp/actxprxy.dll windows/system32/actxprxy.dll
-	mv windows/system32_tmp/advapi32.dll windows/system32/advapi32.dll
-	mv windows/system32_tmp/api-ms-win-core-fibers-l1-1-1.dll windows/system32/api-ms-win-core-fibers-l1-1-1.dll 
-	mv windows/system32_tmp/api-ms-win-core-localization-l1-2-1.dll windows/system32/api-ms-win-core-localization-l1-2-1.dll 
-	mv windows/system32_tmp/api-ms-win-core-synch-l1-2-0.dll windows/system32/api-ms-win-core-synch-l1-2-0.dll
-	mv windows/system32_tmp/bcrypt.dll windows/system32/bcrypt.dll
-	mv windows/system32_tmp/combase.dll windows/system32/combase.dll
-	mv windows/system32_tmp/comctl32.dll windows/system32/comctl32.dll
-	mv windows/system32_tmp/comdlg32.dll windows/system32/comdlg32.dll
-	mv windows/system32_tmp/crtdll.dll windows/system32/crtdll.dll
-	mv windows/system32_tmp/crypt32.dll windows/system32/crypt32.dll
-	mv windows/system32_tmp/dbghelp.dll windows/system32/dbghelp.dll
-	mv windows/system32_tmp/ddraw.dll windows/system32/ddraw.dll
-	mv windows/system32_tmp/dplayx.dll windows/system32/dplayx.dll
-	mv windows/system32_tmp/dnsapi.dll windows/system32/dnsapi.dll
-	mv windows/system32_tmp/dsound.dll windows/system32/dsound.dll
-	mv windows/system32_tmp/dwmapi.dll windows/system32/dwmapi.dll
-	mv windows/system32_tmp/explorer.exe windows/system32/explorer.exe
-	mv windows/system32_tmp/gdi32.dll windows/system32/gdi32.dll
-	mv windows/system32_tmp/gdiplus.dll windows/system32/gdiplus.dll
-	mv windows/system32_tmp/hal.dll windows/system32/hal.dll
-	mv windows/system32_tmp/hid.dll windows/system32/hid.dll
-	mv windows/system32_tmp/imagehlp.dll windows/system32/imagehlp.dll
-	mv windows/system32_tmp/imm32.dll windows/system32/imm32.dll
-	mv windows/system32_tmp/imm32.dll windows/system32/imm32.dll
-	mv windows/system32_tmp/iphlpapi.dll windows/system32/iphlpapi.dll
-	mv windows/system32_tmp/kernel32.dll windows/system32/kernel32.dll
-	mv windows/system32_tmp/kernelbase.dll windows/system32/kernelbase.dll
-	mv windows/system32_tmp/midimap.dll windows/system32/midimap.dll
-	mv windows/system32_tmp/mmdevapi.dll windows/system32/mmdevapi.dll
-	mv windows/system32_tmp/mpr.dll windows/system32/mpr.dll
-	mv windows/system32_tmp/msacm32.dll windows/system32/msacm32.dll
-	mv windows/system32_tmp/msftedit.dll windows/system32/msftedit.dll
-	mv windows/system32_tmp/msimg32.dll windows/system32/msimg32.dll
-	mv windows/system32_tmp/msvcrt.dll windows/system32/msvcrt.dll
-	mv windows/system32_tmp/ntdll.dll windows/system32/ntdll.dll
-	mv windows/system32_tmp/nsi.dll windows/system32/nsi.dll
-	mv windows/system32_tmp/ntoskrnl.exe windows/system32/ntoskrnl.exe
-	mv windows/system32_tmp/ole32.dll windows/system32/ole32.dll
-	mv windows/system32_tmp/oleaut32.dll windows/system32/oleaut32.dll
-	mv windows/system32_tmp/oledlg.dll windows/system32/oledlg.dll
-	mv windows/system32_tmp/opengl32.dll windows/system32/opengl32.dll
-	mv windows/system32_tmp/psapi.dll windows/system32/psapi.dll
-	mv windows/system32_tmp/plugplay.exe windows/system32/plugplay.exe
-	mv windows/system32_tmp/rasapi32.dll windows/system32/rasapi32.dll
-	mv windows/system32_tmp/riched20.dll windows/system32/riched20.dll
-	mv windows/system32_tmp/riched32.dll windows/system32/riched32.dll
-	mv windows/system32_tmp/rpcrt4.dll windows/system32/rpcrt4.dll
-	mv windows/system32_tmp/rpcss.exe windows/system32/rpcss.exe
-	mv windows/system32_tmp/rsaenh.dll windows/system32/rsaenh.dll
-	mv windows/system32_tmp/sechost.dll windows/system32/sechost.dll
-	mv windows/system32_tmp/services.exe windows/system32/services.exe
-	mv windows/system32_tmp/setupapi.dll windows/system32/setupapi.dll
-	mv windows/system32_tmp/shcore.dll windows/system32/shcore.dll
-	mv windows/system32_tmp/shell32.dll windows/system32/shell32.dll
-	mv windows/system32_tmp/shlwapi.dll windows/system32/shlwapi.dll
-	mv windows/system32_tmp/svchost.exe windows/system32/svchost.exe
-	mv windows/system32_tmp/ucrtbase.dll windows/system32/ucrtbase.dll
-	mv windows/system32_tmp/urlmon.dll windows/system32/urlmon.dll
-	mv windows/system32_tmp/user32.dll windows/system32/user32.dll
-	mv windows/system32_tmp/userenv.dll windows/system32/userenv.dll
-	mv windows/system32_tmp/usp10.dll windows/system32/usp10.dll
-	mv windows/system32_tmp/uxtheme.dll windows/system32/uxtheme.dll
-	mv windows/system32_tmp/version.dll windows/system32/version.dll
-	mv windows/system32_tmp/wevtsvc.dll windows/system32/wevtsvc.dll
-	mv windows/system32_tmp/win32u.dll windows/system32/win32u.dll
-	mv windows/system32_tmp/wineboot.exe windows/system32/wineboot.exe
-	mv windows/system32_tmp/winebrowser.exe windows/system32/winebrowser.exe
-	mv windows/system32_tmp/winecoreaudio.drv windows/system32/winecoreaudio.drv
-	mv windows/system32_tmp/winedevice.exe windows/system32/winedevice.exe
-	mv windows/system32_tmp/wined3d.dll windows/system32/wined3d.dll
-	mv windows/system32_tmp/winemac.drv windows/system32/winemac.drv
-	mv windows/system32_tmp/winemenubuilder.exe windows/system32/winemenubuilder.exe
-	mv windows/system32_tmp/wininet.dll windows/system32/wininet.dll
-	mv windows/system32_tmp/winmm.dll windows/system32/winmm.dll
-	mv windows/system32_tmp/winspool.drv windows/system32/winspool.drv
-	mv windows/system32_tmp/wow64.dll windows/system32/wow64.dll
-	mv windows/system32_tmp/wow64cpu.dll windows/system32/wow64cpu.dll
-	mv windows/system32_tmp/ws2_32.dll windows/system32/ws2_32.dll
-	mv windows/system32_tmp/wsock32.dll windows/system32/wsock32.dll
+	mv system32_tmp/actxprxy.dll system32
+	mv system32_tmp/advapi32.dll system32
+	mv system32_tmp/api-ms-win-core-fibers-l1-1-1.dll system32
+	mv system32_tmp/api-ms-win-core-localization-l1-2-1.dll system32
+	mv system32_tmp/api-ms-win-core-synch-l1-2-0.dll system32
+	mv system32_tmp/bcrypt.dll system32
+	mv system32_tmp/combase.dll system32
+	mv system32_tmp/comctl32.dll system32
+	mv system32_tmp/comdlg32.dll system32
+	mv system32_tmp/crtdll.dll system32
+	mv system32_tmp/crypt32.dll system32
+	mv system32_tmp/dbghelp.dll system32
+	mv system32_tmp/ddraw.dll system32
+	mv system32_tmp/dplayx.dll system32
+	mv system32_tmp/dnsapi.dll system32
+	mv system32_tmp/dsound.dll system32
+	mv system32_tmp/dwmapi.dll system32
+	mv system32_tmp/explorer.exe system32
+	mv system32_tmp/gdi32.dll system32
+	mv system32_tmp/gdiplus.dll system32
+	mv system32_tmp/hal.dll system32
+	mv system32_tmp/hid.dll system32
+	mv system32_tmp/imagehlp.dll system32
+	mv system32_tmp/imm32.dll system32
+	mv system32_tmp/iphlpapi.dll system32
+	mv system32_tmp/kernel32.dll system32
+	mv system32_tmp/kernelbase.dll system32
+	mv system32_tmp/midimap.dll system32
+	mv system32_tmp/mmdevapi.dll system32
+	mv system32_tmp/mpr.dll system32
+	mv system32_tmp/msacm32.dll system32
+	mv system32_tmp/msftedit.dll system32
+	mv system32_tmp/msimg32.dll system32
+	mv system32_tmp/msvcrt.dll system32
+	mv system32_tmp/ntdll.dll system32
+	mv system32_tmp/nsi.dll system32
+	mv system32_tmp/ntoskrnl.exe system32
+	mv system32_tmp/ole32.dll system32
+	mv system32_tmp/oleaut32.dll system32
+	mv system32_tmp/oledlg.dll system32
+	mv system32_tmp/opengl32.dll system32
+	mv system32_tmp/psapi.dll system32
+	mv system32_tmp/plugplay.exe system32
+	mv system32_tmp/rasapi32.dll system32
+	mv system32_tmp/riched20.dll system32
+	mv system32_tmp/riched32.dll system32
+	mv system32_tmp/rpcrt4.dll system32
+	mv system32_tmp/rpcss.exe system32
+	mv system32_tmp/rsaenh.dll system32
+	mv system32_tmp/sechost.dll system32
+	mv system32_tmp/services.exe system32
+	mv system32_tmp/setupapi.dll system32
+	mv system32_tmp/shcore.dll system32
+	mv system32_tmp/shell32.dll system32
+	mv system32_tmp/shlwapi.dll system32
+	mv system32_tmp/svchost.exe system32
+	mv system32_tmp/ucrtbase.dll system32
+	mv system32_tmp/urlmon.dll system32
+	mv system32_tmp/user32.dll system32
+	mv system32_tmp/userenv.dll system32
+	mv system32_tmp/usp10.dll system32
+	mv system32_tmp/uxtheme.dll system32
+	mv system32_tmp/version.dll system32
+	mv system32_tmp/wevtsvc.dll system32
+	mv system32_tmp/win32u.dll system32
+	mv system32_tmp/wineboot.exe system32
+	mv system32_tmp/winebrowser.exe system32
+	mv system32_tmp/winecoreaudio.drv system32
+	mv system32_tmp/winedevice.exe system32
+	mv system32_tmp/wined3d.dll system32
+	mv system32_tmp/winemac.drv system32
+	mv system32_tmp/winemenubuilder.exe system32
+	mv system32_tmp/wininet.dll system32
+	mv system32_tmp/winmm.dll system32
+	mv system32_tmp/winspool.drv system32
+	mv system32_tmp/wow64.dll system32
+	mv system32_tmp/wow64cpu.dll system32
+	mv system32_tmp/ws2_32.dll system32
+	mv system32_tmp/wsock32.dll system32
 	
-	rm -r windows/system32_tmp
+	rm -r system32_tmp
+	
+	cd ..
+	
+	echo ""
 else
 	echo "directory system32 not found"
+	echo ""
 fi
 
 
 if [ -d "windows/syswow64" ]; then
-	mv windows/syswow64 windows/syswow64_tmp
-	mkdir windows/syswow64
+	echo "Trimming drive_c/windows/syswow64:"
+	
+	cd windows
 
-	mv windows/syswow64_tmp/advapi32.dll windows/syswow64/advapi32.dll
-	mv windows/syswow64_tmp/api-ms-win-core-fibers-l1-1-1.dll windows/syswow64/api-ms-win-core-fibers-l1-1-1.dll 
-	mv windows/syswow64_tmp/api-ms-win-core-localization-l1-2-1.dll windows/syswow64/api-ms-win-core-localization-l1-2-1.dll 
-	mv windows/syswow64_tmp/api-ms-win-core-synch-l1-2-0.dll windows/syswow64/api-ms-win-core-synch-l1-2-0.dll
-	mv windows/syswow64_tmp/combase.dll windows/syswow64/combase.dll
-	mv windows/syswow64_tmp/bcrypt.dll windows/syswow64/bcrypt.dll
-	mv windows/syswow64_tmp/comctl32.dll windows/syswow64/comctl32.dll
-	mv windows/syswow64_tmp/comdlg32.dll windows/syswow64/comdlg32.dll
-	mv windows/syswow64_tmp/crtdll.dll windows/syswow64/crtdll.dll
-	mv windows/syswow64_tmp/crypt32.dll windows/syswow64/crypt32.dll
-	mv windows/syswow64_tmp/dbghelp.dll windows/syswow64/dbghelp.dll
-	mv windows/syswow64_tmp/ddraw.dll windows/syswow64/ddraw.dll
-	mv windows/syswow64_tmp/dnsapi.dll windows/syswow64/dnsapi.dll
-	mv windows/syswow64_tmp/dplayx.dll windows/syswow64/dplayx.dll
-	mv windows/syswow64_tmp/dsound.dll windows/syswow64/dsound.dll
-	mv windows/syswow64_tmp/dwmapi.dll windows/syswow64/dwmapi.dll
-	mv windows/syswow64_tmp/gdi32.dll windows/syswow64/gdi32.dll
-	mv windows/syswow64_tmp/gdiplus.dll windows/syswow64/gdiplus.dll
-	mv windows/syswow64_tmp/imagehlp.dll windows/syswow64/imagehlp.dll
-	mv windows/syswow64_tmp/imm32.dll windows/syswow64/imm32.dll
-	mv windows/syswow64_tmp/iphlpapi.dll windows/syswow64/iphlpapi.dll
-	mv windows/syswow64_tmp/kernel32.dll windows/syswow64/kernel32.dll
-	mv windows/syswow64_tmp/kernelbase.dll windows/syswow64/kernelbase.dll
-	mv windows/syswow64_tmp/midimap.dll windows/syswow64/midimap.dll
-	mv windows/syswow64_tmp/mmdevapi.dll windows/syswow64/mmdevapi.dll
-	mv windows/syswow64_tmp/mpr.dll windows/syswow64/mpr.dll
-	mv windows/syswow64_tmp/msacm32.dll windows/syswow64/msacm32.dll
-	mv windows/syswow64_tmp/msftedit.dll windows/syswow64/msftedit.dll
-	mv windows/syswow64_tmp/msimg32.dll windows/syswow64/msimg32.dll
-	mv windows/syswow64_tmp/msvcrt.dll windows/syswow64/msvcrt.dll
-	mv windows/syswow64_tmp/netapi32.dll windows/syswow64/netapi32.dll
-	mv windows/syswow64_tmp/ntdll.dll windows/syswow64/ntdll.dll
-	mv windows/syswow64_tmp/nsi.dll windows/syswow64/nsi.dll
-	mv windows/syswow64_tmp/ole32.dll windows/syswow64/ole32.dll
-	mv windows/syswow64_tmp/oleaut32.dll windows/syswow64/oleaut32.dll
-	mv windows/syswow64_tmp/oledlg.dll windows/syswow64/oledlg.dll
-	mv windows/syswow64_tmp/opengl32.dll windows/syswow64/opengl32.dll
-	mv windows/syswow64_tmp/psapi.dll windows/syswow64/psapi.dll
-	mv windows/syswow64_tmp/rsaenh.dll windows/syswow64/rsaenh.dll
-	mv windows/syswow64_tmp/rasapi32.dll windows/syswow64/rasapi32.dll
-	mv windows/syswow64_tmp/riched20.dll windows/syswow64/riched20.dll
-	mv windows/syswow64_tmp/riched32.dll windows/syswow64/riched32.dll
-	mv windows/syswow64_tmp/rpcrt4.dll windows/syswow64/rpcrt4.dll
-	mv windows/syswow64_tmp/sechost.dll windows/syswow64/sechost.dll
-	mv windows/syswow64_tmp/setupapi.dll windows/syswow64/setupapi.dll
-	mv windows/syswow64_tmp/shcore.dll windows/syswow64/shcore.dll
-	mv windows/syswow64_tmp/shell32.dll windows/syswow64/shell32.dll
-	mv windows/syswow64_tmp/shlwapi.dll windows/syswow64/shlwapi.dll
-	mv windows/syswow64_tmp/ucrtbase.dll windows/syswow64/ucrtbase.dll
-	mv windows/syswow64_tmp/urlmon.dll windows/syswow64/urlmon.dll
-	mv windows/syswow64_tmp/user32.dll windows/syswow64/user32.dll
-	mv windows/syswow64_tmp/usp10.dll windows/syswow64/usp10.dll
-	mv windows/syswow64_tmp/uxtheme.dll windows/syswow64/uxtheme.dll
-	mv windows/syswow64_tmp/version.dll windows/syswow64/version.dll
-	mv windows/syswow64_tmp/win32u.dll windows/syswow64/win32u.dll
-	mv windows/syswow64_tmp/winebrowser.exe windows/syswow64/winebrowser.exe
-	mv windows/syswow64_tmp/winecoreaudio.drv windows/syswow64/winecoreaudio.drv
-	mv windows/syswow64_tmp/wined3d.dll windows/syswow64/wined3d.dll
-	mv windows/syswow64_tmp/winemac.drv windows/syswow64/winemac.drv
-	mv windows/syswow64_tmp/wininet.dll windows/syswow64/wininet.dll
-	mv windows/syswow64_tmp/winmm.dll windows/syswow64/winmm.dll
-	mv windows/syswow64_tmp/winspool.drv windows/syswow64/winspool.drv
-	mv windows/syswow64_tmp/ws2_32.dll windows/syswow64/ws2_32.dll
-	mv windows/syswow64_tmp/wsock32.dll windows/syswow64/wsock32.dll
+	mv syswow64 syswow64_tmp
+	mkdir syswow64
 
-	rm -r windows/syswow64_tmp
+	mv syswow64_tmp/advapi32.dll syswow64
+	mv syswow64_tmp/api-ms-win-core-fibers-l1-1-1.dll syswow64
+	mv syswow64_tmp/api-ms-win-core-localization-l1-2-1.dll syswow64
+	mv syswow64_tmp/api-ms-win-core-synch-l1-2-0.dll syswow64
+	mv syswow64_tmp/combase.dll syswow64
+	mv syswow64_tmp/bcrypt.dll syswow64
+	mv syswow64_tmp/comctl32.dll syswow64
+	mv syswow64_tmp/comdlg32.dll syswow64
+	mv syswow64_tmp/crtdll.dll syswow64
+	mv syswow64_tmp/crypt32.dll syswow64
+	mv syswow64_tmp/dbghelp.dll syswow64
+	mv syswow64_tmp/ddraw.dll syswow64
+	mv syswow64_tmp/dnsapi.dll syswow64
+	mv syswow64_tmp/dplayx.dll syswow64
+	mv syswow64_tmp/dsound.dll syswow64
+	mv syswow64_tmp/dwmapi.dll syswow64
+	mv syswow64_tmp/gdi32.dll syswow64
+	mv syswow64_tmp/gdiplus.dll syswow64
+	mv syswow64_tmp/imagehlp.dll syswow64
+	mv syswow64_tmp/imm32.dll syswow64
+	mv syswow64_tmp/iphlpapi.dll syswow64
+	mv syswow64_tmp/kernel32.dll syswow64
+	mv syswow64_tmp/kernelbase.dll syswow64
+	mv syswow64_tmp/midimap.dll syswow64
+	mv syswow64_tmp/mmdevapi.dll syswow64
+	mv syswow64_tmp/mpr.dll syswow64
+	mv syswow64_tmp/msacm32.dll syswow64
+	mv syswow64_tmp/msftedit.dll syswow64
+	mv syswow64_tmp/msimg32.dll syswow64
+	mv syswow64_tmp/msvcrt.dll syswow64
+	mv syswow64_tmp/netapi32.dll syswow64
+	mv syswow64_tmp/ntdll.dll syswow64
+	mv syswow64_tmp/nsi.dll syswow64
+	mv syswow64_tmp/ole32.dll syswow64
+	mv syswow64_tmp/oleaut32.dll syswow64
+	mv syswow64_tmp/oledlg.dll syswow64
+	mv syswow64_tmp/opengl32.dll syswow64
+	mv syswow64_tmp/psapi.dll syswow64
+	mv syswow64_tmp/rsaenh.dll syswow64
+	mv syswow64_tmp/rasapi32.dll syswow64
+	mv syswow64_tmp/riched20.dll syswow64
+	mv syswow64_tmp/riched32.dll syswow64
+	mv syswow64_tmp/rpcrt4.dll syswow64
+	mv syswow64_tmp/sechost.dll syswow64
+	mv syswow64_tmp/setupapi.dll syswow64
+	mv syswow64_tmp/shcore.dll syswow64
+	mv syswow64_tmp/shell32.dll syswow64
+	mv syswow64_tmp/shlwapi.dll syswow64
+	mv syswow64_tmp/ucrtbase.dll syswow64
+	mv syswow64_tmp/urlmon.dll syswow64
+	mv syswow64_tmp/user32.dll syswow64
+	mv syswow64_tmp/usp10.dll syswow64
+	mv syswow64_tmp/uxtheme.dll syswow64
+	mv syswow64_tmp/version.dll syswow64
+	mv syswow64_tmp/win32u.dll syswow64
+	mv syswow64_tmp/winebrowser.exe syswow64
+	mv syswow64_tmp/winecoreaudio.drv syswow64
+	mv syswow64_tmp/wined3d.dll syswow64
+	mv syswow64_tmp/winemac.drv syswow64
+	mv syswow64_tmp/wininet.dll syswow64
+	mv syswow64_tmp/winmm.dll syswow64
+	mv syswow64_tmp/winspool.drv syswow64
+	mv syswow64_tmp/ws2_32.dll syswow64
+	mv syswow64_tmp/wsock32.dll syswow64
+
+	rm -r syswow64_tmp
+	
+	cd ..
+	
+	echo ""
 else
 	echo "directory syswow64 not found"
+	echo ""
 fi
 
 
 if [ -d "windows/winsxs" ]; then
-	mv windows/winsxs windows/winsxs_tmp
-	mkdir windows/winsxs
+	echo "Trimming drive_c/windows/winsxs:"
 
-	mkdir windows/winsxs/manifests
+	cd windows
 
-	mv windows/winsxs_tmp/manifests/amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.2600.2982_none_deadbeef.manifest windows/winsxs/manifests/amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.2600.2982_none_deadbeef.manifest
-	mv windows/winsxs_tmp/manifests/x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.2600.2982_none_deadbeef.manifest windows/winsxs/manifests/x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.2600.2982_none_deadbeef.manifest
+	mv winsxs winsxs_tmp
+	mkdir winsxs
 
-	mv windows/winsxs_tmp/amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.2600.2982_none_deadbeef windows/winsxs/amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.2600.2982_none_deadbeef
-	mv windows/winsxs_tmp/x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.2600.2982_none_deadbeef windows/winsxs/x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.2600.2982_none_deadbeef
+	mkdir winsxs/manifests
 
-	rm -r windows/winsxs_tmp
+	mv winsxs_tmp/manifests/amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.2600.2982_none_deadbeef.manifest winsxs/manifests
+	mv winsxs_tmp/manifests/x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.2600.2982_none_deadbeef.manifest winsxs/manifests
+
+	mv winsxs_tmp/amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.2600.2982_none_deadbeef winsxs
+	mv winsxs_tmp/x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.2600.2982_none_deadbeef winsxs
+
+	rm -r winsxs_tmp
+	
+	cd ..
+	
+	echo ""
 else
 	echo "directory winsxs not found"
+	echo ""
 fi
 
 
 if [ -d "windows" ]; then
+	echo "Trimming drive_c/windows:"
+
 	mv windows windows_tmp
 	mkdir windows
 
-	mv windows_tmp/Fonts windows/Fonts
-	mv windows_tmp/resources windows/resources
-	mv windows_tmp/system32 windows/system32
-	mv windows_tmp/syswow64 windows/syswow64
-	mv windows_tmp/winsxs windows/winsxs
-	mv windows_tmp/profiles windows/profiles
+	mv windows_tmp/Fonts windows
+	mv windows_tmp/resources windows
+	mv windows_tmp/system32 windows
+	mv windows_tmp/syswow64 windows
+	mv windows_tmp/winsxs windows
+	mv windows_tmp/profiles windows
 
 	rm -r windows_tmp
+	
+	echo ""
 else
 	echo "directory windows not found"
+	echo ""
 fi
 
+
+echo "Trimming drive_c/Program Files*:"
 
 rm -r "Program Files/"*
 rm -r "Program Files (x86)/"*
 
+echo ""
+
 
 cd "$WORKINGDIR"
 [ ! -d "Contents/SharedSupport/wine" ] && echo "directory wine not found" && exit 1
-
-
 cd Contents/SharedSupport/wine/
+
+
+echo "Removing gecko and mono:"
 
 rm -r share/wine/gecko/*
 rm -r share/wine/mono/*
 
+echo ""
+
 
 if [ -d "lib/wine/i386-windows" ]; then
-	#WS11WineCX64Bit22.1.1-8
+	echo "Trimming lib/wine/i386-windows:" #WS11WineCX64Bit22.1.1-8
+	
+	cd lib/wine
 
-	mv lib/wine/i386-windows lib/wine/i386-windows_tmp
-	mkdir lib/wine/i386-windows
+	mv i386-windows i386-windows_tmp
+	mkdir i386-windows
 
-	mv lib/wine/i386-windows_tmp/dnsapi.dll lib/wine/i386-windows/dnsapi.dll
-	mv lib/wine/i386-windows_tmp/ntdll.dll lib/wine/i386-windows/ntdll.dll
-	mv lib/wine/i386-windows_tmp/winecoreaudio.drv lib/wine/i386-windows/winecoreaudio.drv
-	mv lib/wine/i386-windows_tmp/ws2_32.dll lib/wine/i386-windows/ws2_32.dll
+	mv i386-windows_tmp/dnsapi.dll i386-windows
+	mv i386-windows_tmp/ntdll.dll i386-windows
+	mv i386-windows_tmp/winecoreaudio.drv i386-windows
+	mv i386-windows_tmp/ws2_32.dll i386-windows
 
-	rm -r lib/wine/i386-windows_tmp
+	rm -r i386-windows_tmp
 	
 	#Debug code to reduce spam in opensnoop
 	#cd "$WORKINGDIR"
 	#cp Contents/SharedSupport/prefix/drive_c/windows/syswow64/* Contents/SharedSupport/wine/lib/wine/i386-windows
-	#cd Contents/SharedSupport/wine/
-
+	#cd Contents/SharedSupport/wine/lib/wine
+	
+	cd ../..
+	
+	echo ""
 elif [[ -f "lib/wine/ntdll.dll" || -f "lib/wine/kernelbase.dll" ]]; then	
-	#WS11WineCX64Bit21.2.0-1 and below
+	echo "Trimming lib/wine:" #WS11WineCX64Bit21.2.0-1 and below
 	
-	mv lib/wine lib/wine_tmp
-	mkdir lib/wine
+	cd lib
 	
-	mv lib/wine_tmp/crtdll.dll lib/wine/crtdll.dll
-	mv lib/wine_tmp/gdi32.dll lib/wine/gdi32.dll
-	mv lib/wine_tmp/msvcrt.dll lib/wine/msvcrt.dll
-	mv lib/wine_tmp/ntdll.dll lib/wine/ntdll.dll
-	mv lib/wine_tmp/ucrtbase.dll lib/wine/ucrtbase.dll 
+	mv wine wine_tmp
+	mkdir wine
 	
-	rm -r lib/wine_tmp
+	mv wine_tmp/crtdll.dll wine
+	mv wine_tmp/gdi32.dll wine
+	mv wine_tmp/msvcrt.dll wine
+	mv wine_tmp/ntdll.dll wine
+	mv wine_tmp/ucrtbase.dll wine
+	
+	rm -r wine_tmp
 	
 	#Debug code to reduce spam in opensnoop
 	#cd "$WORKINGDIR"
 	#cp Contents/SharedSupport/prefix/drive_c/windows/syswow64/* Contents/SharedSupport/wine/lib/wine
-	#cd Contents/SharedSupport/wine/
+	#cd Contents/SharedSupport/wine/lib
 	
+	cd ..
+	
+	echo ""
 else
 	echo "directory i386-windows not found"
+	echo ""
 fi
 
 
 if [ -d "lib/wine/x86_32on64-unix" ]; then
-	#WS11WineCX64Bit22.1.1-8
+	echo "Trimming lib/wine/x86_32on64-unix:" #WS11WineCX64Bit22.1.1-8
+	
+	cd lib/wine
 
-	mv lib/wine/x86_32on64-unix lib/wine/x86_32on64-unix_tmp
-	mkdir lib/wine/x86_32on64-unix
+	mv x86_32on64-unix x86_32on64-unix_tmp
+	mkdir x86_32on64-unix
 
-	mv lib/wine/x86_32on64-unix_tmp/dnsapi.so lib/wine/x86_32on64-unix/dnsapi.so
-	mv lib/wine/x86_32on64-unix_tmp/libwine.1.0.dylib lib/wine/x86_32on64-unix/libwine.1.0.dylib
-	mv lib/wine/x86_32on64-unix_tmp/libwine.1.dylib lib/wine/x86_32on64-unix/libwine.1.dylib
-	mv lib/wine/x86_32on64-unix_tmp/mountmgr.so lib/wine/x86_32on64-unix/mountmgr.so
-	mv lib/wine/x86_32on64-unix_tmp/nsiproxy.so lib/wine/x86_32on64-unix/nsiproxy.so
-	mv lib/wine/x86_32on64-unix_tmp/ntdll.so lib/wine/x86_32on64-unix/ntdll.so
-	mv lib/wine/x86_32on64-unix_tmp/opengl32.dll.so lib/wine/x86_32on64-unix/opengl32.dll.so
-	mv lib/wine/x86_32on64-unix_tmp/win32u.dll.so lib/wine/x86_32on64-unix/win32u.dll.so
-	mv lib/wine/x86_32on64-unix_tmp/winebus.so lib/wine/x86_32on64-unix/winebus.so
-	mv lib/wine/x86_32on64-unix_tmp/winecoreaudio.so lib/wine/x86_32on64-unix/winecoreaudio.so
-	mv lib/wine/x86_32on64-unix_tmp/winemac.drv.so lib/wine/x86_32on64-unix/winemac.drv.so
-	mv lib/wine/x86_32on64-unix_tmp/ws2_32.so lib/wine/x86_32on64-unix/ws2_32.so
+	mv x86_32on64-unix_tmp/dnsapi.so x86_32on64-unix
+	mv x86_32on64-unix_tmp/libwine.1.0.dylib x86_32on64-unix
+	mv x86_32on64-unix_tmp/libwine.1.dylib x86_32on64-unix
+	mv x86_32on64-unix_tmp/mountmgr.so x86_32on64-unix
+	mv x86_32on64-unix_tmp/nsiproxy.so x86_32on64-unix
+	mv x86_32on64-unix_tmp/ntdll.so x86_32on64-unix
+	mv x86_32on64-unix_tmp/opengl32.dll.so x86_32on64-unix
+	mv x86_32on64-unix_tmp/win32u.dll.so x86_32on64-unix
+	mv x86_32on64-unix_tmp/winebus.so x86_32on64-unix
+	mv x86_32on64-unix_tmp/winecoreaudio.so x86_32on64-unix
+	mv x86_32on64-unix_tmp/winemac.drv.so x86_32on64-unix
+	mv x86_32on64-unix_tmp/ws2_32.so x86_32on64-unix
 
-	rm -r lib/wine/x86_32on64-unix_tmp
+	rm -r x86_32on64-unix_tmp
+	
+	cd ../..
+	
+	echo ""
 elif [ -d "lib32on64/wine" ]; then
-	#WS11WineCX64Bit21.2.0-1 and below
+	echo "Trimming lib32on64/wine:" #WS11WineCX64Bit21.2.0-1 and below
 	
-	mv lib32on64/wine lib32on64/wine_tmp
-	mkdir lib32on64/wine
+	cd lib32on64
+	
+	mv wine wine_tmp
+	mkdir wine
 
-	mv lib32on64/wine_tmp/*.dll lib32on64/wine
+	mv wine_tmp/*.dll wine
 
-	mv lib32on64/wine_tmp/dnsapi.so lib32on64/wine/dnsapi.so
-	mv lib32on64/wine_tmp/ntdll.so lib32on64/wine/ntdll.so
-	mv lib32on64/wine_tmp/opengl32.so lib32on64/wine/opengl32.so
-	mv lib32on64/wine_tmp/ws2_32.so lib32on64/wine/ws2_32.so
-	mv lib32on64/wine_tmp/kernel32.so lib32on64/wine/kernel32.so
-	mv lib32on64/wine_tmp/msvcrt.so lib32on64/wine/msvcrt.so
-	mv lib32on64/wine_tmp/advapi32.so lib32on64/wine/advapi32.so
-	mv lib32on64/wine_tmp/iphlpapi.so lib32on64/wine/iphlpapi.so
-	mv lib32on64/wine_tmp/shell32.so lib32on64/wine/shell32.so
-	mv lib32on64/wine_tmp/gdi32.so lib32on64/wine/gdi32.so
-	mv lib32on64/wine_tmp/user32.so lib32on64/wine/user32.so
-	mv lib32on64/wine_tmp/wow64cpu.so lib32on64/wine/wow64cpu.so
-	mv lib32on64/wine_tmp/crtdll.so lib32on64/wine/crtdll.so
-	mv lib32on64/wine_tmp/ucrtbase.so lib32on64/wine/ucrtbase.so
-	mv lib32on64/wine_tmp/bcrypt.so lib32on64/wine/bcrypt.so
-	mv lib32on64/wine_tmp/crypt32.so lib32on64/wine/crypt32.so
-	mv lib32on64/wine_tmp/netapi32.so lib32on64/wine/netapi32.so
-	mv lib32on64/wine_tmp/dbghelp.so lib32on64/wine/dbghelp.so
+	mv wine_tmp/dnsapi.so wine
+	mv wine_tmp/ntdll.so wine
+	mv wine_tmp/opengl32.so wine
+	mv wine_tmp/ws2_32.so wine
+	mv wine_tmp/kernel32.so wine
+	mv wine_tmp/msvcrt.so wine
+	mv wine_tmp/advapi32.so wine
+	mv wine_tmp/iphlpapi.so wine
+	mv wine_tmp/shell32.so wine
+	mv wine_tmp/gdi32.so wine
+	mv wine_tmp/user32.so wine
+	mv wine_tmp/wow64cpu.so wine
+	mv wine_tmp/crtdll.so wine
+	mv wine_tmp/ucrtbase.so wine
+	mv wine_tmp/bcrypt.so wine
+	mv wine_tmp/crypt32.so wine
+	mv wine_tmp/netapi32.so wine
+	mv wine_tmp/dbghelp.so wine
 
-	mv lib32on64/wine_tmp/dnsapi.dll.so lib32on64/wine/dnsapi.dll.so
-	mv lib32on64/wine_tmp/ntdll.dll.so lib32on64/wine/ntdll.dll.so
-	mv lib32on64/wine_tmp/opengl32.dll.so lib32on64/wine/opengl32.dll.so
-	mv lib32on64/wine_tmp/ws2_32.dll.so lib32on64/wine/ws2_32.dll.so
-	mv lib32on64/wine_tmp/kernel32.dll.so lib32on64/wine/kernel32.dll.so
-	mv lib32on64/wine_tmp/msvcrt.dll.so lib32on64/wine/msvcrt.dll.so
-	mv lib32on64/wine_tmp/advapi32.dll.so lib32on64/wine/advapi32.dll.so
-	mv lib32on64/wine_tmp/iphlpapi.dll.so lib32on64/wine/iphlpapi.dll.so
-	mv lib32on64/wine_tmp/shell32.dll.so lib32on64/wine/shell32.dll.so
-	mv lib32on64/wine_tmp/gdi32.dll.so lib32on64/wine/gdi32.dll.so
-	mv lib32on64/wine_tmp/user32.dll.so lib32on64/wine/user32.dll.so
-	mv lib32on64/wine_tmp/wow64cpu.dll.so lib32on64/wine/wow64cpu.dll.so
-	mv lib32on64/wine_tmp/crtdll.dll.so lib32on64/wine/crtdll.dll.so
-	mv lib32on64/wine_tmp/ucrtbase.dll.so lib32on64/wine/ucrtbase.dll.so
-	mv lib32on64/wine_tmp/bcrypt.dll.so lib32on64/wine/bcrypt.dll.so
-	mv lib32on64/wine_tmp/crypt32.dll.so lib32on64/wine/crypt32.dll.so
-	mv lib32on64/wine_tmp/netapi32.dll.so lib32on64/wine/netapi32.dll.so
-	mv lib32on64/wine_tmp/dbghelp.dll.so lib32on64/wine/dbghelp.dll.so
+	mv wine_tmp/dnsapi.dll.so wine
+	mv wine_tmp/ntdll.dll.so wine
+	mv wine_tmp/opengl32.dll.so wine
+	mv wine_tmp/ws2_32.dll.so wine
+	mv wine_tmp/kernel32.dll.so wine
+	mv wine_tmp/msvcrt.dll.so wine
+	mv wine_tmp/advapi32.dll.so wine
+	mv wine_tmp/iphlpapi.dll.so wine
+	mv wine_tmp/shell32.dll.so wine
+	mv wine_tmp/gdi32.dll.so wine
+	mv wine_tmp/user32.dll.so wine
+	mv wine_tmp/wow64cpu.dll.so wine
+	mv wine_tmp/crtdll.dll.so wine
+	mv wine_tmp/ucrtbase.dll.so wine
+	mv wine_tmp/bcrypt.dll.so wine
+	mv wine_tmp/crypt32.dll.so wine
+	mv wine_tmp/netapi32.dll.so wine
+	mv wine_tmp/dbghelp.dll.so wine
 	
-	mv lib32on64/wine_tmp/mountmgr.sys.so lib32on64/wine/mountmgr.sys.so
-	mv lib32on64/wine_tmp/winebus.sys.so lib32on64/wine/winebus.sys.so
+	mv wine_tmp/mountmgr.sys.so wine
+	mv wine_tmp/winebus.sys.so wine
 	
-	mv lib32on64/wine_tmp/winspool.drv.so lib32on64/wine/winspool.drv.so
-	mv lib32on64/wine_tmp/winecoreaudio.drv.so lib32on64/wine/winecoreaudio.drv.so
-	mv lib32on64/wine_tmp/winemac.drv.so lib32on64/wine/winemac.drv.so
-	mv lib32on64/wine_tmp/winejoystick.drv.so lib32on64/wine/winejoystick.drv.so
+	mv wine_tmp/winspool.drv.so wine
+	mv wine_tmp/winecoreaudio.drv.so wine
+	mv wine_tmp/winemac.drv.so wine
+	mv wine_tmp/winejoystick.drv.so wine
 	
-	mv lib32on64/wine_tmp/hidclass.sys lib32on64/wine/hidclass.sys
+	mv wine_tmp/hidclass.sys wine
 	
-	rm -r lib32on64/wine_tmp
+	rm -r wine_tmp
+	
+	cd ..
+	
+	echo ""
 else
 	echo "directory x86_32on64-unix not found"
+	echo ""
 fi
 
 
 if [ -d "lib/wine/x86_64-unix" ]; then
-	#WS11WineCX64Bit22.1.1-8
+	echo "Trimming lib/wine/x86_64-unix:" #WS11WineCX64Bit22.1.1-8
+	
+	cd lib/wine
 
-	mv lib/wine/x86_64-unix lib/wine/x86_64-unix_tmp
-	mkdir lib/wine/x86_64-unix
+	mv x86_64-unix x86_64-unix_tmp
+	mkdir x86_64-unix
 
-	mv lib/wine/x86_64-unix_tmp/dnsapi.so lib/wine/x86_64-unix/dnsapi.so
-	mv lib/wine/x86_64-unix_tmp/libwine.1.0.dylib lib/wine/x86_64-unix/libwine.1.0.dylib
-	mv lib/wine/x86_64-unix_tmp/libwine.1.dylib lib/wine/x86_64-unix/libwine.1.dylib
-	mv lib/wine/x86_64-unix_tmp/mountmgr.so lib/wine/x86_64-unix/mountmgr.so
-	mv lib/wine/x86_64-unix_tmp/nsiproxy.so lib/wine/x86_64-unix/nsiproxy.so
-	mv lib/wine/x86_64-unix_tmp/ntdll.so lib/wine/x86_64-unix/ntdll.so
-	mv lib/wine/x86_64-unix_tmp/win32u.dll.so lib/wine/x86_64-unix/win32u.dll.so
-	mv lib/wine/x86_64-unix_tmp/winebus.so lib/wine/x86_64-unix/winebus.so
-	mv lib/wine/x86_64-unix_tmp/winemac.drv.so lib/wine/x86_64-unix/winemac.drv.so
-	mv lib/wine/x86_64-unix_tmp/ws2_32.so lib/wine/x86_64-unix/ws2_32.so
+	mv x86_64-unix_tmp/dnsapi.so x86_64-unix
+	mv x86_64-unix_tmp/libwine.1.0.dylib x86_64-unix
+	mv x86_64-unix_tmp/libwine.1.dylib x86_64-unix
+	mv x86_64-unix_tmp/mountmgr.so x86_64-unix
+	mv x86_64-unix_tmp/nsiproxy.so x86_64-unix
+	mv x86_64-unix_tmp/ntdll.so x86_64-unix
+	mv x86_64-unix_tmp/win32u.dll.so x86_64-unix
+	mv x86_64-unix_tmp/winebus.so x86_64-unix
+	mv x86_64-unix_tmp/winemac.drv.so x86_64-unix
+	mv x86_64-unix_tmp/ws2_32.so x86_64-unix
 
-	rm -r lib/wine/x86_64-unix_tmp
-elif [ -d "lib/wine/x86_64-unix" ]; then
-	#TODO: Add support for older wine versions
-	echo "directory x86_64-unix not found"
+	rm -r x86_64-unix_tmp
+	
+	cd ../..
+	
+	echo ""
 else
 	echo "directory x86_64-unix not found"
+	echo ""
 fi
 
 
 if [ -d "lib/wine/x86_64-windows" ]; then
-	#WS11WineCX64Bit22.1.1-8
+	echo "Trimming lib/wine/x86_64-windows:" #WS11WineCX64Bit22.1.1-8
 	
-	mv lib/wine/x86_64-windows lib/wine/x86_64-windows_tmp
-	mkdir lib/wine/x86_64-windows
+	cd lib/wine
+	
+	mv x86_64-windows x86_64-windows_tmp
+	mkdir x86_64-windows
 
-	mv lib/wine/x86_64-windows_tmp/apisetschema.dll lib/wine/x86_64-windows/apisetschema.dll
-	mv lib/wine/x86_64-windows_tmp/dnsapi.dll lib/wine/x86_64-windows/dnsapi.dll
-	mv lib/wine/x86_64-windows_tmp/hidparse.sys lib/wine/x86_64-windows/hidparse.sys
-	mv lib/wine/x86_64-windows_tmp/hidclass.sys lib/wine/x86_64-windows/hidclass.sys
-	mv lib/wine/x86_64-windows_tmp/mountmgr.sys lib/wine/x86_64-windows/mountmgr.sys
-	mv lib/wine/x86_64-windows_tmp/ndis.sys lib/wine/x86_64-windows/ndis.sys
-	mv lib/wine/x86_64-windows_tmp/nsiproxy.sys lib/wine/x86_64-windows/nsiproxy.sys
-	mv lib/wine/x86_64-windows_tmp/ntdll.dll lib/wine/x86_64-windows/ntdll.dll
-	mv lib/wine/x86_64-windows_tmp/ntoskrnl.exe lib/wine/x86_64-windows/ntoskrnl.exe
-	mv lib/wine/x86_64-windows_tmp/winebus.sys lib/wine/x86_64-windows/winebus.sys
-	mv lib/wine/x86_64-windows_tmp/winehid.sys lib/wine/x86_64-windows/winehid.sys
-	mv lib/wine/x86_64-windows_tmp/ws2_32.dll lib/wine/x86_64-windows/ws2_32.dll
+	mv x86_64-windows_tmp/apisetschema.dll x86_64-windows
+	mv x86_64-windows_tmp/dnsapi.dll x86_64-windows
+	mv x86_64-windows_tmp/hidparse.sys x86_64-windows
+	mv x86_64-windows_tmp/hidclass.sys x86_64-windows
+	mv x86_64-windows_tmp/mountmgr.sys x86_64-windows
+	mv x86_64-windows_tmp/ndis.sys x86_64-windows
+	mv x86_64-windows_tmp/nsiproxy.sys x86_64-windows
+	mv x86_64-windows_tmp/ntdll.dll x86_64-windows
+	mv x86_64-windows_tmp/ntoskrnl.exe x86_64-windows
+	mv x86_64-windows_tmp/winebus.sys x86_64-windows
+	mv x86_64-windows_tmp/winehid.sys x86_64-windows
+	mv x86_64-windows_tmp/ws2_32.dll x86_64-windows
 
-	rm -r lib/wine/x86_64-windows_tmp
+	rm -r x86_64-windows_tmp
 	
 	#Debug code to reduce spam in opensnoop
 	#cd "$WORKINGDIR"
 	#cp Contents/SharedSupport/prefix/drive_c/windows/system32/* Contents/SharedSupport/wine/lib/wine/x86_64-windows
 	
+	cd ../..
+	
+	echo ""
 elif [ -d "lib64/wine" ]; then
-	#WS11WineCX64Bit21.2.0-1 and below
+	echo "Trimming lib64/wine:" #WS11WineCX64Bit21.2.0-1 and below
+	
+	cd lib64
 
-	mv lib64/wine lib64/wine_tmp
-	mkdir lib64/wine
+	mv wine wine_tmp
+	mkdir wine
 	
-	mv lib64/wine_tmp/mountmgr.sys.so lib64/wine/mountmgr.sys.so
-	mv lib64/wine_tmp/ntdll.so lib64/wine/ntdll.so
-	mv lib64/wine_tmp/ntdll.dll.so lib64/wine/ntdll.dll.so
-	mv lib64/wine_tmp/winebus.sys.so lib64/wine/winebus.sys.so
-	mv lib64/wine_tmp/winemac.drv.so lib64/wine/winemac.drv.so
-	mv lib64/wine_tmp/ws2_32.dll.so lib64/wine/ws2_32.dll.so
-	mv lib64/wine_tmp/iphlpapi.dll.so lib64/wine/iphlpapi.dll.so 
-	mv lib64/wine_tmp/shell32.dll.so lib64/wine/shell32.dll.so
-	mv lib64/wine_tmp/ucrtbase.so lib64/wine/ucrtbase.so
-	mv lib64/wine_tmp/user32.so lib64/wine/user32.so 
-	mv lib64/wine_tmp/kernel32.dll.so lib64/wine/kernel32.dll.so
+	mv wine_tmp/mountmgr.sys.so wine
+	mv wine_tmp/ntdll.so wine
+	mv wine_tmp/ntdll.dll.so wine
+	mv wine_tmp/winebus.sys.so wine
+	mv wine_tmp/winemac.drv.so wine
+	mv wine_tmp/ws2_32.dll.so wine
+	mv wine_tmp/iphlpapi.dll.so wine
+	mv wine_tmp/shell32.dll.so wine
+	mv wine_tmp/ucrtbase.so wine
+	mv wine_tmp/user32.so wine
+	mv wine_tmp/kernel32.dll.so wine
 	
-	mv lib64/wine_tmp/msvcrt.so lib64/wine/msvcrt.so 
-	mv lib64/wine_tmp/gdi32.so lib64/wine/gdi32.so 
+	mv wine_tmp/msvcrt.so wine
+	mv wine_tmp/gdi32.so wine
 	
-	mv lib64/wine_tmp/wow64cpu.dll.so lib64/wine/wow64cpu.dll.so
-	mv lib64/wine_tmp/advapi32.dll.so lib64/wine/advapi32.dll.so
-	mv lib64/wine_tmp/gdi32.dll.so lib64/wine/gdi32.dll.so
-	mv lib64/wine_tmp/msvcrt.dll.so lib64/wine/msvcrt.dll.so
-	mv lib64/wine_tmp/user32.dll.so lib64/wine/user32.dll.so
+	mv wine_tmp/wow64cpu.dll.so wine
+	mv wine_tmp/advapi32.dll.so wine
+	mv wine_tmp/gdi32.dll.so wine
+	mv wine_tmp/msvcrt.dll.so wine
+	mv wine_tmp/user32.dll.so wine
 
-	mv lib64/wine_tmp/ndis.sys lib64/wine/ndis.sys
-	mv lib64/wine_tmp/winehid.sys lib64/wine/winehid.sys
-	mv lib64/wine_tmp/hidclass.sys lib64/wine/hidclass.sys
+	mv wine_tmp/ndis.sys wine
+	mv wine_tmp/winehid.sys wine
+	mv wine_tmp/hidclass.sys wine
 	
-	mv lib64/wine_tmp/ntdll.dll lib64/wine/ntdll.dll
-	mv lib64/wine_tmp/ucrtbase.dll lib64/wine/ucrtbase.dll 
-	mv lib64/wine_tmp/user32.dll lib64/wine/user32.dll 
+	mv wine_tmp/ntdll.dll wine
+	mv wine_tmp/ucrtbase.dll wine
+	mv wine_tmp/user32.dll wine
 	
-	rm -r lib64/wine_tmp
+	rm -r wine_tmp
 	
 	#Debug code to reduce spam in opensnoop
 	#cd "$WORKINGDIR"
 	#cp Contents/SharedSupport/prefix/drive_c/windows/system32/* Contents/SharedSupport/wine/lib64/wine
 
+	cd ..
+	
+	echo ""
 else
 	echo "directory x86_64-windows not found"
+	echo ""
 fi
