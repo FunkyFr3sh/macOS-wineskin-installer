@@ -124,6 +124,7 @@ if [ -d "windows/system32" ]; then
 	mv system32_tmp/secur32.dll system32
 	mv system32_tmp/services.exe system32
 	mv system32_tmp/setupapi.dll system32
+	mv system32_tmp/start.exe system32
 	mv system32_tmp/shcore.dll system32
 	mv system32_tmp/shell32.dll system32
 	mv system32_tmp/shlwapi.dll system32
@@ -238,6 +239,7 @@ if [ -d "windows/syswow64" ]; then
 	mv syswow64_tmp/secur32.dll syswow64
 	mv syswow64_tmp/services.exe syswow64
 	mv syswow64_tmp/setupapi.dll syswow64
+	mv syswow64_tmp/start.exe syswow64
 	mv syswow64_tmp/shcore.dll syswow64
 	mv syswow64_tmp/shell32.dll syswow64
 	mv syswow64_tmp/shlwapi.dll syswow64
