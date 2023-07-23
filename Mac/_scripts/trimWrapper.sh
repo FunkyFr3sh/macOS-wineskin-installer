@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # The following script will reduce the filesize of a clean wineskin wrapper (25-50MB Compressed/pkg, depends on wine version)
-# Made for old games with little to no dependencies. Tested with Warcraft II, EV Nova, GTA, Dune 2000, Tiberian Sun
+# Made for old games with little to no dependencies. Tested with Warcraft II, EV Nova, GTA, Dune 2000, Tiberian Sun, Moorhuhn 2
 # Tested with wine version WS11WineCX64Bit22.1.1-8, WS11WineCX64Bit21.2.0-1, WS11WineCX21.2.0-1, WS11WineCX64Bit20.0.4, WS11WineCX20.0.4
 
 
@@ -75,6 +75,8 @@ if [ -d "windows/system32" ]; then
 	mv system32_tmp/crypt32.dll system32
 	mv system32_tmp/dbghelp.dll system32
 	mv system32_tmp/ddraw.dll system32
+	mv system32_tmp/dinput.dll system32
+	mv system32_tmp/dinput8.dll system32
 	mv system32_tmp/dplayx.dll system32
 	mv system32_tmp/dnsapi.dll system32
 	mv system32_tmp/dsound.dll system32
@@ -187,6 +189,8 @@ if [ -d "windows/syswow64" ]; then
 	mv syswow64_tmp/crypt32.dll syswow64
 	mv syswow64_tmp/dbghelp.dll syswow64
 	mv syswow64_tmp/ddraw.dll syswow64
+	mv syswow64_tmp/dinput.dll syswow64
+	mv syswow64_tmp/dinput8.dll syswow64
 	mv syswow64_tmp/dnsapi.dll syswow64
 	mv syswow64_tmp/dplayx.dll syswow64
 	mv syswow64_tmp/dsound.dll syswow64
@@ -401,6 +405,8 @@ if [ -d "lib/wine/x86_32on64-unix" ]; then
 	mv x86_32on64-unix_tmp/crypt32.so x86_32on64-unix
 	mv x86_32on64-unix_tmp/netapi32.so x86_32on64-unix
 	mv x86_32on64-unix_tmp/secur32.so x86_32on64-unix
+	mv x86_32on64-unix_tmp/dinput.so x86_32on64-unix
+	mv x86_32on64-unix_tmp/dinput8.so x86_32on64-unix
 	
 	mv x86_32on64-unix_tmp/mountmgr.so x86_32on64-unix
 	mv x86_32on64-unix_tmp/winebus.so x86_32on64-unix
@@ -436,6 +442,8 @@ elif [ -d "lib32on64/wine" ]; then
 	mv wine_tmp/crypt32.so wine
 	mv wine_tmp/netapi32.so wine
 	mv wine_tmp/secur32.so wine
+	mv wine_tmp/dinput.so wine
+	mv wine_tmp/dinput8.so wine
 
 	mv wine_tmp/dnsapi.dll.so wine
 	mv wine_tmp/ntdll.dll.so wine
@@ -446,6 +454,8 @@ elif [ -d "lib32on64/wine" ]; then
 	mv wine_tmp/crypt32.dll.so wine
 	mv wine_tmp/netapi32.dll.so wine
 	mv wine_tmp/secur32.dll.so wine
+	mv wine_tmp/dinput.dll.so wine
+	mv wine_tmp/dinput8.dll.so wine
 	
 	mv wine_tmp/mountmgr.sys.so wine
 	mv wine_tmp/winebus.sys.so wine
@@ -456,6 +466,8 @@ elif [ -d "lib32on64/wine" ]; then
 	mv wine_tmp/winejoystick.drv.so wine
 	
 	mv wine_tmp/hidclass.sys wine
+	mv wine_tmp/ndis.sys wine
+	mv wine_tmp/winehid.sys wine
 	
 	mv wine_tmp/kernel32.so wine
 	mv wine_tmp/msvcrt.so wine
