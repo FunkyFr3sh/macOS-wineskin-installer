@@ -59,6 +59,7 @@ if [ -d "windows/system32" ]; then
 
 	mv system32_tmp/drivers system32
 	
+	mv system32_tmp/apisetschema.dll system32
 	mv system32_tmp/actxprxy.dll system32
 	mv system32_tmp/advapi32.dll system32
 	mv system32_tmp/api-ms-win-core-fibers-l1-1-1.dll system32
@@ -170,6 +171,7 @@ if [ -d "windows/syswow64" ]; then
 	mv syswow64 syswow64_tmp
 	mkdir syswow64
 	
+	mv syswow64_tmp/apisetschema.dll syswow64
 	mv syswow64_tmp/actxprxy.dll syswow64
 	mv syswow64_tmp/advapi32.dll syswow64
 	mv syswow64_tmp/api-ms-win-core-fibers-l1-1-1.dll syswow64
@@ -345,50 +347,33 @@ echo ""
 if [ -d "lib/wine/i386-windows" ]; then
 	echo "Trimming lib/wine/i386-windows:" #WS11WineCX64Bit22.1.1-8
 	
-	cd lib/wine
-
-	mv i386-windows i386-windows_tmp
-	mkdir i386-windows
-
-	mv i386-windows_tmp/dnsapi.dll i386-windows
-	mv i386-windows_tmp/ntdll.dll i386-windows
-	mv i386-windows_tmp/winecoreaudio.drv i386-windows
-	mv i386-windows_tmp/ws2_32.dll i386-windows
-	mv i386-windows_tmp/crypt32.dll i386-windows
-
-	rm -r i386-windows_tmp
+	rm -r lib/wine/i386-windows/*
 	
-	#Debug code to reduce spam in opensnoop
-	#cd "$WORKINGDIR"
-	#cp drive_c/windows/syswow64/* Contents/SharedSupport/wine/lib/wine/i386-windows
-	#cd Contents/SharedSupport/wine/lib/wine
+	cd lib/wine/i386-windows
+
+	if [ -f "../../../../../../drive_c/windows/syswow64/ntdll.dll" ]; then
+		ln -s ../../../../../../drive_c/windows/syswow64/* .
+	elif [ -f "../../../../../../drive_c/windows/system32/ntdll.dll" ]; then
+		ln -s ../../../../../../drive_c/windows/system32/* .
+	fi
 	
-	cd ../..
+	cd ../../..
 	
 	echo ""
 elif [[ -f "lib/wine/ntdll.dll" || -f "lib/wine/kernelbase.dll" ]]; then	
 	echo "Trimming lib/wine:" #WS11WineCX64Bit21.2.0-1 and below
 	
-	cd lib
+	rm -r lib/wine/*
 	
-	mv wine wine_tmp
-	mkdir wine
+	cd lib/wine
+
+	if [ -f "../../../../../drive_c/windows/syswow64/ntdll.dll" ]; then
+		ln -s ../../../../../drive_c/windows/syswow64/* .
+	elif [ -f "../../../../../drive_c/windows/system32/ntdll.dll" ]; then
+		ln -s ../../../../../drive_c/windows/system32/* .
+	fi
 	
-	mv wine_tmp/crtdll.dll wine
-	mv wine_tmp/gdi32.dll wine
-	mv wine_tmp/msvcrt.dll wine
-	mv wine_tmp/ntdll.dll wine
-	mv wine_tmp/ucrtbase.dll wine
-	mv wine_tmp/crypt32.dll wine
-	
-	rm -r wine_tmp
-	
-	#Debug code to reduce spam in opensnoop
-	#cd "$WORKINGDIR"
-	#cp drive_c/windows/syswow64/* Contents/SharedSupport/wine/lib/wine
-	#cd Contents/SharedSupport/wine/lib
-	
-	cd ..
+	cd ../..
 	
 	echo ""
 else
@@ -544,27 +529,24 @@ if [ -d "lib/wine/x86_64-windows" ]; then
 	
 	mv x86_64-windows x86_64-windows_tmp
 	mkdir x86_64-windows
-
-	mv x86_64-windows_tmp/apisetschema.dll x86_64-windows
-	mv x86_64-windows_tmp/dnsapi.dll x86_64-windows
+	
 	mv x86_64-windows_tmp/hidparse.sys x86_64-windows
 	mv x86_64-windows_tmp/hidclass.sys x86_64-windows
 	mv x86_64-windows_tmp/mountmgr.sys x86_64-windows
 	mv x86_64-windows_tmp/ndis.sys x86_64-windows
 	mv x86_64-windows_tmp/nsiproxy.sys x86_64-windows
-	mv x86_64-windows_tmp/ntdll.dll x86_64-windows
-	mv x86_64-windows_tmp/ntoskrnl.exe x86_64-windows
 	mv x86_64-windows_tmp/winebus.sys x86_64-windows
 	mv x86_64-windows_tmp/winehid.sys x86_64-windows
-	mv x86_64-windows_tmp/ws2_32.dll x86_64-windows
-
+	
 	rm -r x86_64-windows_tmp
 	
-	#Debug code to reduce spam in opensnoop
-	#cd "$WORKINGDIR"
-	#cp drive_c/windows/system32/* Contents/SharedSupport/wine/lib/wine/x86_64-windows
+	cd x86_64-windows
 	
-	cd ../..
+	if [ -f "../../../../../../drive_c/windows/system32/ntdll.dll" ]; then
+		ln -s ../../../../../../drive_c/windows/system32/* .
+	fi
+	
+	cd ../../..
 	
 	echo ""
 elif [ -d "lib64/wine" ]; then
@@ -600,17 +582,15 @@ elif [ -d "lib64/wine" ]; then
 	mv wine_tmp/winehid.sys wine
 	mv wine_tmp/hidclass.sys wine
 	
-	mv wine_tmp/ntdll.dll wine
-	mv wine_tmp/ucrtbase.dll wine
-	mv wine_tmp/user32.dll wine
-	
 	rm -r wine_tmp
 	
-	#Debug code to reduce spam in opensnoop
-	#cd "$WORKINGDIR"
-	#cp drive_c/windows/system32/* Contents/SharedSupport/wine/lib64/wine
-
-	cd ..
+	cd wine
+	
+	if [ -f "../../../../../drive_c/windows/system32/ntdll.dll" ]; then
+		ln -s ../../../../../drive_c/windows/system32/* .
+	fi
+	
+	cd ../..
 	
 	echo ""
 else
