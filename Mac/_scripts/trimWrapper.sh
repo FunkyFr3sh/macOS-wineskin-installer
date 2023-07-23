@@ -483,7 +483,11 @@ elif [ -d "lib32on64/wine" ]; then
 	
 	rm -r wine_tmp
 	
-	cd ..
+	cd wine
+	
+	ln -s ../../lib/wine/*.exe .
+	
+	cd ../..
 	
 	echo ""
 else
