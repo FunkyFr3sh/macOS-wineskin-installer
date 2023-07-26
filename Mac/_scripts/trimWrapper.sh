@@ -63,7 +63,7 @@ if [ -d "Wineskin.app/Contents/Resources" ]; then
 	
 	echo ""
 else
-	echo "Directory Contents/Frameworks not found"
+	echo "Directory Wineskin.app/Contents/Resources not found"
 	echo ""
 fi
 
