@@ -407,8 +407,6 @@ if [ -d "lib/wine/x86_32on64-unix" ]; then
 	mv x86_32on64-unix_tmp/crypt32.so x86_32on64-unix
 	mv x86_32on64-unix_tmp/netapi32.so x86_32on64-unix
 	mv x86_32on64-unix_tmp/secur32.so x86_32on64-unix
-	mv x86_32on64-unix_tmp/dinput.so x86_32on64-unix
-	mv x86_32on64-unix_tmp/dinput8.so x86_32on64-unix
 	
 	mv x86_32on64-unix_tmp/mountmgr.so x86_32on64-unix
 	mv x86_32on64-unix_tmp/winebus.so x86_32on64-unix
@@ -444,8 +442,6 @@ elif [ -d "lib32on64/wine" ]; then
 	mv wine_tmp/crypt32.so wine
 	mv wine_tmp/netapi32.so wine
 	mv wine_tmp/secur32.so wine
-	mv wine_tmp/dinput.so wine
-	mv wine_tmp/dinput8.so wine
 
 	mv wine_tmp/dnsapi.dll.so wine
 	mv wine_tmp/ntdll.dll.so wine
@@ -456,8 +452,6 @@ elif [ -d "lib32on64/wine" ]; then
 	mv wine_tmp/crypt32.dll.so wine
 	mv wine_tmp/netapi32.dll.so wine
 	mv wine_tmp/secur32.dll.so wine
-	mv wine_tmp/dinput.dll.so wine
-	mv wine_tmp/dinput8.dll.so wine
 	
 	mv wine_tmp/mountmgr.sys.so wine
 	mv wine_tmp/winebus.sys.so wine
@@ -482,6 +476,8 @@ elif [ -d "lib32on64/wine" ]; then
 	mv wine_tmp/ucrtbase.so wine
 	mv wine_tmp/dbghelp.so wine
 	mv wine_tmp/wldap32.so wine
+	mv wine_tmp/dinput.so wine
+	mv wine_tmp/dinput8.so wine
 	
 	mv wine_tmp/kernel32.dll.so wine
 	mv wine_tmp/msvcrt.dll.so wine
@@ -494,6 +490,8 @@ elif [ -d "lib32on64/wine" ]; then
 	mv wine_tmp/ucrtbase.dll.so wine
 	mv wine_tmp/dbghelp.dll.so wine
 	mv wine_tmp/wldap32.dll.so wine
+	mv wine_tmp/dinput.dll.so wine
+	mv wine_tmp/dinput8.dll.so wine
 	
 	rm -r wine_tmp
 	
@@ -548,21 +546,19 @@ if [ -d "lib/wine/x86_64-windows" ]; then
 	mv x86_64-windows x86_64-windows_tmp
 	mkdir x86_64-windows
 	
-	mv x86_64-windows_tmp/hidparse.sys x86_64-windows
+	mv x86_64-windows_tmp/ndis.sys x86_64-windows
+	mv x86_64-windows_tmp/winehid.sys x86_64-windows
 	mv x86_64-windows_tmp/hidclass.sys x86_64-windows
 	mv x86_64-windows_tmp/mountmgr.sys x86_64-windows
-	mv x86_64-windows_tmp/ndis.sys x86_64-windows
-	mv x86_64-windows_tmp/nsiproxy.sys x86_64-windows
 	mv x86_64-windows_tmp/winebus.sys x86_64-windows
-	mv x86_64-windows_tmp/winehid.sys x86_64-windows
+	mv x86_64-windows_tmp/hidparse.sys x86_64-windows
+	mv x86_64-windows_tmp/nsiproxy.sys x86_64-windows
 	
 	rm -r x86_64-windows_tmp
 	
 	cd x86_64-windows
 	
-	if [ -f "../../../../../../drive_c/windows/system32/ntdll.dll" ]; then
-		ln -s ../../../../../../drive_c/windows/system32/* .
-	fi
+	ln -s ../../../../../../drive_c/windows/system32/* .
 	
 	cd ../../..
 	
@@ -574,11 +570,15 @@ elif [ -d "lib64/wine" ]; then
 
 	mv wine wine_tmp
 	mkdir wine
-	
+
+	mv wine_tmp/ndis.sys wine
+	mv wine_tmp/winehid.sys wine
+	mv wine_tmp/hidclass.sys wine
 	mv wine_tmp/mountmgr.sys.so wine
+	mv wine_tmp/winebus.sys.so wine
+	
 	mv wine_tmp/ntdll.so wine
 	mv wine_tmp/ntdll.dll.so wine
-	mv wine_tmp/winebus.sys.so wine
 	mv wine_tmp/winemac.drv.so wine
 	mv wine_tmp/ws2_32.dll.so wine
 	mv wine_tmp/iphlpapi.dll.so wine
@@ -595,18 +595,12 @@ elif [ -d "lib64/wine" ]; then
 	mv wine_tmp/gdi32.dll.so wine
 	mv wine_tmp/msvcrt.dll.so wine
 	mv wine_tmp/user32.dll.so wine
-
-	mv wine_tmp/ndis.sys wine
-	mv wine_tmp/winehid.sys wine
-	mv wine_tmp/hidclass.sys wine
 	
 	rm -r wine_tmp
 	
 	cd wine
 	
-	if [ -f "../../../../../drive_c/windows/system32/ntdll.dll" ]; then
-		ln -s ../../../../../drive_c/windows/system32/* .
-	fi
+	ln -s ../../../../../drive_c/windows/system32/* .
 	
 	cd ../..
 	
