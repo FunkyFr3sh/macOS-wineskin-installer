@@ -47,6 +47,27 @@ else
 fi
 
 
+if [ -d "Wineskin.app/Contents/Resources" ]; then
+	echo "Trimming Wineskin.app/Contents/Resources:"
+	
+	cd Wineskin.app/Contents/Resources
+
+	rm 7z
+	rm 7z.so
+	rm 7za
+	rm 7zCon.sfx
+	rm 7zr
+	rm wineskin7z
+	
+	cd ../../..
+	
+	echo ""
+else
+	echo "Directory Contents/Frameworks not found"
+	echo ""
+fi
+
+
 cd drive_c
 
 if [ -d "windows/system32" ]; then
