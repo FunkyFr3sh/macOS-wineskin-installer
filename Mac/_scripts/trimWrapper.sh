@@ -121,7 +121,9 @@ if [ -d "windows/system32" ]; then
 	mv system32_tmp/msacm32.dll system32
 	mv system32_tmp/msftedit.dll system32
 	mv system32_tmp/msimg32.dll system32
+	mv system32_tmp/msacm32.drv system32
 	mv system32_tmp/msvcrt.dll system32
+	mv system32_tmp/msvcr120.dll system32
 	mv system32_tmp/netapi32.dll system32
 	mv system32_tmp/ntdll.dll system32
 	mv system32_tmp/nsi.dll system32
@@ -164,6 +166,7 @@ if [ -d "windows/system32" ]; then
 	mv system32_tmp/winecoreaudio.drv system32
 	mv system32_tmp/winedevice.exe system32
 	mv system32_tmp/wined3d.dll system32
+	mv system32_tmp/wineps.drv system32
 	mv system32_tmp/winemac.drv system32
 	mv system32_tmp/winemenubuilder.exe system32
 	mv system32_tmp/wininet.dll system32
@@ -236,7 +239,9 @@ if [ -d "windows/syswow64" ]; then
 	mv syswow64_tmp/msacm32.dll syswow64
 	mv syswow64_tmp/msftedit.dll syswow64
 	mv syswow64_tmp/msimg32.dll syswow64
+	mv syswow64_tmp/msacm32.drv syswow64
 	mv syswow64_tmp/msvcrt.dll syswow64
+	mv syswow64_tmp/msvcr120.dll syswow64
 	mv syswow64_tmp/netapi32.dll syswow64
 	mv syswow64_tmp/ntdll.dll syswow64
 	mv syswow64_tmp/nsi.dll syswow64
@@ -279,6 +284,7 @@ if [ -d "windows/syswow64" ]; then
 	mv syswow64_tmp/winecoreaudio.drv syswow64
 	mv syswow64_tmp/winedevice.exe syswow64
 	mv syswow64_tmp/wined3d.dll syswow64
+	mv syswow64_tmp/wineps.drv syswow64
 	mv syswow64_tmp/winemac.drv syswow64
 	mv syswow64_tmp/wininet.dll syswow64
 	mv syswow64_tmp/winmm.dll syswow64
@@ -481,7 +487,7 @@ elif [ -d "lib32on64/wine" ]; then
 	mv wine_tmp/winecoreaudio.drv.so wine
 	mv wine_tmp/winemac.drv.so wine
 	mv wine_tmp/winejoystick.drv.so wine
-	
+
 	mv wine_tmp/hidclass.sys wine
 	mv wine_tmp/ndis.sys wine
 	mv wine_tmp/winehid.sys wine
@@ -499,6 +505,7 @@ elif [ -d "lib32on64/wine" ]; then
 	mv wine_tmp/wldap32.so wine
 	mv wine_tmp/dinput.so wine
 	mv wine_tmp/dinput8.so wine
+	mv wine_tmp/msvcr120.so wine
 	
 	mv wine_tmp/kernel32.dll.so wine
 	mv wine_tmp/msvcrt.dll.so wine
@@ -513,12 +520,14 @@ elif [ -d "lib32on64/wine" ]; then
 	mv wine_tmp/wldap32.dll.so wine
 	mv wine_tmp/dinput.dll.so wine
 	mv wine_tmp/dinput8.dll.so wine
+	mv wine_tmp/msvcr120.dll.so wine
 	
 	rm -r wine_tmp
 	
 	cd wine
 	
 	ln -s ../../lib/wine/*.exe .
+	ln -s ../../lib/wine/*.drv .
 	
 	cd ../..
 	
