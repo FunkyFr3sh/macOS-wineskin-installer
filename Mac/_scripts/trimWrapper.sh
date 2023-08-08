@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# The following script will reduce the filesize of a clean wineskin wrapper (25-50MB Compressed/pkg, depends on wine version)
+# The following script will reduce the filesize of a clean wineskin wrapper (30-50MB Compressed/pkg, depends on wine version)
 # Made for old games with little to no dependencies. Tested with Warcraft II, EV Nova, GTA, Dune 2000, Tiberian Sun, Moorhuhn 2
 # Tested with wine version WS11WineCX64Bit22.1.1-8, WS11WineCX64Bit21.2.0-1, WS11WineCX21.2.0-1, WS11WineCX64Bit20.0.4, WS11WineCX20.0.4
 
@@ -35,6 +35,43 @@ if [ -d "Contents/Frameworks" ]; then
 	mv Frameworks_tmp/libpng16.dylib Frameworks
 	mv Frameworks_tmp/libwine.1.0.dylib Frameworks
 	mv Frameworks_tmp/libwine.1.dylib Frameworks
+	
+	mv Frameworks_tmp/libSDL2-2.0.0.dylib Frameworks
+	mv Frameworks_tmp/libSDL2.dylib Frameworks
+	
+	# May need these here for SSL?
+	
+	mv Frameworks_tmp/libgmp.10.dylib Frameworks
+	mv Frameworks_tmp/libgmp.dylib Frameworks
+	mv Frameworks_tmp/libgmpxx.4.dylib Frameworks
+	mv Frameworks_tmp/libgmpxx.dylib Frameworks
+	mv Frameworks_tmp/libgnutls.30.dylib Frameworks
+	mv Frameworks_tmp/libgnutls.dylib Frameworks
+	mv Frameworks_tmp/libgnutlsxx.30.dylib Frameworks
+	mv Frameworks_tmp/libgnutlsxx.dylib Frameworks
+	mv Frameworks_tmp/libffi.8.dylib Frameworks
+	mv Frameworks_tmp/libffi.dylib Frameworks
+	mv Frameworks_tmp/libhogweed.6.6.dylib Frameworks
+	mv Frameworks_tmp/libhogweed.6.dylib Frameworks
+	mv Frameworks_tmp/libhogweed.dylib Frameworks
+	mv Frameworks_tmp/libiconv.2.dylib Frameworks
+	mv Frameworks_tmp/libiconv.dylib Frameworks
+	mv Frameworks_tmp/libidn2.0.dylib Frameworks
+	mv Frameworks_tmp/libidn2.dylib Frameworks
+	mv Frameworks_tmp/libintl.8.dylib Frameworks
+	mv Frameworks_tmp/libintl.dylib Frameworks
+	mv Frameworks_tmp/libnettle.8.6.dylib Frameworks
+	mv Frameworks_tmp/libnettle.8.dylib Frameworks
+	mv Frameworks_tmp/libnettle.dylib Frameworks
+	mv Frameworks_tmp/libp11-kit.0.dylib Frameworks
+	mv Frameworks_tmp/libp11-kit.dylib Frameworks
+	mv Frameworks_tmp/libtasn1.6.dylib Frameworks
+	mv Frameworks_tmp/libtasn1.dylib Frameworks
+	mv Frameworks_tmp/libunistring.5.dylib Frameworks
+	mv Frameworks_tmp/libunistring.dylib Frameworks
+	mv Frameworks_tmp/libz.1.2.13.dylib Frameworks
+	mv Frameworks_tmp/libz.1.dylib Frameworks
+	mv Frameworks_tmp/libz.dylib Frameworks
 
 	rm -r Frameworks_tmp
 	
@@ -506,6 +543,7 @@ elif [ -d "lib32on64/wine" ]; then
 	mv wine_tmp/dinput.so wine
 	mv wine_tmp/dinput8.so wine
 	mv wine_tmp/msvcr120.so wine
+	mv wine_tmp/kerberos.so wine
 	
 	mv wine_tmp/kernel32.dll.so wine
 	mv wine_tmp/msvcrt.dll.so wine
@@ -521,6 +559,7 @@ elif [ -d "lib32on64/wine" ]; then
 	mv wine_tmp/dinput.dll.so wine
 	mv wine_tmp/dinput8.dll.so wine
 	mv wine_tmp/msvcr120.dll.so wine
+	mv wine_tmp/kerberos.dll.so wine
 	
 	rm -r wine_tmp
 	
