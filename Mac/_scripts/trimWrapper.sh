@@ -392,14 +392,12 @@ echo ""
 if [ -d "lib/wine/i386-windows" ]; then
 	echo "Trimming lib/wine/i386-windows:" #WS11WineCX64Bit22.1.1-8
 	
-	rm -r lib/wine/i386-windows/*
-	
 	cd lib/wine/i386-windows
 
 	if [ -f "../../../../../../drive_c/windows/syswow64/ntdll.dll" ]; then
-		ln -s ../../../../../../drive_c/windows/syswow64/* .
+		ln -sf ../../../../../../drive_c/windows/syswow64/* .
 	elif [ -f "../../../../../../drive_c/windows/system32/ntdll.dll" ]; then
-		ln -s ../../../../../../drive_c/windows/system32/* .
+		ln -sf ../../../../../../drive_c/windows/system32/* .
 	fi
 	
 	cd ../../..
@@ -408,14 +406,12 @@ if [ -d "lib/wine/i386-windows" ]; then
 elif [[ -f "lib/wine/ntdll.dll" || -f "lib/wine/kernelbase.dll" ]]; then	
 	echo "Trimming lib/wine:" #WS11WineCX64Bit21.2.0-1 and below
 	
-	rm -r lib/wine/*
-	
 	cd lib/wine
 
 	if [ -f "../../../../../drive_c/windows/syswow64/ntdll.dll" ]; then
-		ln -s ../../../../../drive_c/windows/syswow64/* .
+		ln -sf ../../../../../drive_c/windows/syswow64/* .
 	elif [ -f "../../../../../drive_c/windows/system32/ntdll.dll" ]; then
-		ln -s ../../../../../drive_c/windows/system32/* .
+		ln -sf ../../../../../drive_c/windows/system32/* .
 	fi
 	
 	cd ../..
@@ -585,24 +581,9 @@ fi
 if [ -d "lib/wine/x86_64-windows" ]; then
 	echo "Trimming lib/wine/x86_64-windows:" #WS11WineCX64Bit22.1.1-8
 	
-	cd lib/wine
-	
-	mv x86_64-windows x86_64-windows_tmp
-	mkdir x86_64-windows
-	
-	mv x86_64-windows_tmp/ndis.sys x86_64-windows
-	mv x86_64-windows_tmp/winehid.sys x86_64-windows
-	mv x86_64-windows_tmp/hidclass.sys x86_64-windows
-	mv x86_64-windows_tmp/mountmgr.sys x86_64-windows
-	mv x86_64-windows_tmp/winebus.sys x86_64-windows
-	mv x86_64-windows_tmp/hidparse.sys x86_64-windows
-	mv x86_64-windows_tmp/nsiproxy.sys x86_64-windows
-	
-	rm -r x86_64-windows_tmp
-	
-	cd x86_64-windows
-	
-	ln -s ../../../../../../drive_c/windows/system32/* .
+	cd lib/wine/x86_64-windows
+
+	ln -sf ../../../../../../drive_c/windows/system32/* .
 	
 	cd ../../..
 	
@@ -610,41 +591,9 @@ if [ -d "lib/wine/x86_64-windows" ]; then
 elif [ -d "lib64/wine" ]; then
 	echo "Trimming lib64/wine:" #WS11WineCX64Bit21.2.0-1 and below
 	
-	cd lib64
-
-	mv wine wine_tmp
-	mkdir wine
-
-	mv wine_tmp/ndis.sys wine
-	mv wine_tmp/winehid.sys wine
-	mv wine_tmp/hidclass.sys wine
-	mv wine_tmp/mountmgr.sys.so wine
-	mv wine_tmp/winebus.sys.so wine
+	cd lib64/wine
 	
-	mv wine_tmp/ntdll.so wine
-	mv wine_tmp/ntdll.dll.so wine
-	mv wine_tmp/winemac.drv.so wine
-	mv wine_tmp/ws2_32.dll.so wine
-	mv wine_tmp/iphlpapi.dll.so wine
-	mv wine_tmp/shell32.dll.so wine
-	mv wine_tmp/ucrtbase.so wine
-	mv wine_tmp/user32.so wine
-	mv wine_tmp/kernel32.dll.so wine
-	
-	mv wine_tmp/msvcrt.so wine
-	mv wine_tmp/gdi32.so wine
-	
-	mv wine_tmp/wow64cpu.dll.so wine
-	mv wine_tmp/advapi32.dll.so wine
-	mv wine_tmp/gdi32.dll.so wine
-	mv wine_tmp/msvcrt.dll.so wine
-	mv wine_tmp/user32.dll.so wine
-	
-	rm -r wine_tmp
-	
-	cd wine
-	
-	ln -s ../../../../../drive_c/windows/system32/* .
+	ln -sf ../../../../../drive_c/windows/system32/* .
 	
 	cd ../..
 	
