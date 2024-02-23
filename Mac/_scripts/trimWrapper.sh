@@ -22,56 +22,31 @@ if [ -d "Contents/Frameworks" ]; then
 
 	mv Frameworks_tmp/ObjectiveC_Extension.framework Frameworks
 
-	mv Frameworks_tmp/libbrotlicommon.1.0.9.dylib Frameworks
-	mv Frameworks_tmp/libbrotlicommon.1.dylib Frameworks
-	mv Frameworks_tmp/libbrotlicommon.dylib Frameworks
-	mv Frameworks_tmp/libbrotlidec.1.0.9.dylib Frameworks
-	mv Frameworks_tmp/libbrotlidec.1.dylib Frameworks
-	mv Frameworks_tmp/libbrotlidec.dylib Frameworks
-	mv Frameworks_tmp/libfreetype.6.dylib Frameworks
-	mv Frameworks_tmp/libfreetype.dylib Frameworks
+	mv Frameworks_tmp/libbrotlicommon.*dylib Frameworks
+	mv Frameworks_tmp/libbrotlidec.*dylib Frameworks
+	mv Frameworks_tmp/libfreetype.*dylib Frameworks
 	mv Frameworks_tmp/libpng.dylib Frameworks
-	mv Frameworks_tmp/libpng16.16.dylib Frameworks
-	mv Frameworks_tmp/libpng16.dylib Frameworks
-	mv Frameworks_tmp/libwine.1.0.dylib Frameworks
-	mv Frameworks_tmp/libwine.1.dylib Frameworks
+	mv Frameworks_tmp/libpng16.*dylib Frameworks
+	mv Frameworks_tmp/libwine.*dylib Frameworks
 	
-	mv Frameworks_tmp/libSDL2-2.0.0.dylib Frameworks
-	mv Frameworks_tmp/libSDL2.dylib Frameworks
+	mv Frameworks_tmp/libSDL2.*dylib Frameworks
 	
 	# May need these here for SSL?
 	
-	mv Frameworks_tmp/libgmp.10.dylib Frameworks
-	mv Frameworks_tmp/libgmp.dylib Frameworks
-	mv Frameworks_tmp/libgmpxx.4.dylib Frameworks
-	mv Frameworks_tmp/libgmpxx.dylib Frameworks
-	mv Frameworks_tmp/libgnutls.30.dylib Frameworks
-	mv Frameworks_tmp/libgnutls.dylib Frameworks
-	mv Frameworks_tmp/libgnutlsxx.30.dylib Frameworks
-	mv Frameworks_tmp/libgnutlsxx.dylib Frameworks
-	mv Frameworks_tmp/libffi.8.dylib Frameworks
-	mv Frameworks_tmp/libffi.dylib Frameworks
-	mv Frameworks_tmp/libhogweed.6.6.dylib Frameworks
-	mv Frameworks_tmp/libhogweed.6.dylib Frameworks
-	mv Frameworks_tmp/libhogweed.dylib Frameworks
-	mv Frameworks_tmp/libiconv.2.dylib Frameworks
-	mv Frameworks_tmp/libiconv.dylib Frameworks
-	mv Frameworks_tmp/libidn2.0.dylib Frameworks
-	mv Frameworks_tmp/libidn2.dylib Frameworks
-	mv Frameworks_tmp/libintl.8.dylib Frameworks
-	mv Frameworks_tmp/libintl.dylib Frameworks
-	mv Frameworks_tmp/libnettle.8.6.dylib Frameworks
-	mv Frameworks_tmp/libnettle.8.dylib Frameworks
-	mv Frameworks_tmp/libnettle.dylib Frameworks
-	mv Frameworks_tmp/libp11-kit.0.dylib Frameworks
-	mv Frameworks_tmp/libp11-kit.dylib Frameworks
-	mv Frameworks_tmp/libtasn1.6.dylib Frameworks
-	mv Frameworks_tmp/libtasn1.dylib Frameworks
-	mv Frameworks_tmp/libunistring.5.dylib Frameworks
-	mv Frameworks_tmp/libunistring.dylib Frameworks
-	mv Frameworks_tmp/libz.1.2.13.dylib Frameworks
-	mv Frameworks_tmp/libz.1.dylib Frameworks
-	mv Frameworks_tmp/libz.dylib Frameworks
+	mv Frameworks_tmp/libgmp.*dylib Frameworks
+	mv Frameworks_tmp/libgmpxx.*dylib Frameworks
+	mv Frameworks_tmp/libgnutls.*dylib Frameworks
+	mv Frameworks_tmp/libgnutlsxx.*dylib Frameworks
+	mv Frameworks_tmp/libffi.*dylib Frameworks
+	mv Frameworks_tmp/libhogweed.*dylib Frameworks
+	mv Frameworks_tmp/libiconv.*dylib Frameworks
+	mv Frameworks_tmp/libidn2.*dylib Frameworks
+	mv Frameworks_tmp/libintl.*dylib Frameworks
+	mv Frameworks_tmp/libnettle.*dylib Frameworks
+	mv Frameworks_tmp/libp11-kit.*dylib Frameworks
+	mv Frameworks_tmp/libtasn1.*dylib Frameworks
+	mv Frameworks_tmp/libunistring.*dylib Frameworks
+	mv Frameworks_tmp/libz.*dylib Frameworks
 
 	rm -r Frameworks_tmp
 	
