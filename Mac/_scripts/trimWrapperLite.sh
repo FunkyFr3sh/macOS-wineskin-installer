@@ -28,27 +28,6 @@ else
 fi
 
 
-if [ -d "Wineskin.app/Contents/Resources" ]; then
-	echo "Trimming Wineskin.app/Contents/Resources:"
-	
-	cd Wineskin.app/Contents/Resources
-
-	rm 7z
-	rm 7z.so
-	rm 7za
-	rm 7zCon.sfx
-	rm 7zr
-	rm wineskin7z
-	
-	cd ../../..
-	
-	echo ""
-else
-	echo "Directory Wineskin.app/Contents/Resources not found"
-	echo ""
-fi
-
-
 cd drive_c
 
 cd "$WORKINGDIR"
