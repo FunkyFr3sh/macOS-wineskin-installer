@@ -17,7 +17,7 @@ if [ -d "Contents/Frameworks" ]; then
 	cd Contents
 
 	rm Frameworks/libicu*.dylib
-    rm Frameworks/libMoltenVK*.dylib
+	rm Frameworks/libMoltenVK*.dylib
 	
 	cd ..
 	
